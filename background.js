@@ -7,7 +7,7 @@ const files = [
   {
     title: "الأذكار والآداب",
     url: "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0101AlAthkaar_AbdulAzizAsSini.mp3",
-    category: "الأذكار",
+    category: "الحديث",
   },
   {
     title: "نواقض الإسلام",
@@ -32,7 +32,7 @@ const files = [
   {
     title: "تحفة الأطفال",
     url: "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0301ThufatUlAtfaal_AbdulAzizAsSini.mp3",
-    category: "التجويد",
+    category: "التجويد و القراءات",
   },
   {
     title: "شروط الصلاة وأركانها وواجباتها",
@@ -67,7 +67,7 @@ const files = [
   {
     title: "الورقات",
     url: "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0501AlWaraqat_AbdulAzizAsSini.mp3",
-    category: "الأصول",
+    category: "أصول الفقه",
   },
   {
     title: "عنوان الحكم",
@@ -102,7 +102,7 @@ const files = [
   {
     title: "نخبة الفكر",
     url: "https://files.a-alqasim.com/audio/Mutoon/IbraheemAlMihdaar/0801Nukhbah_IbraheemAlMihdaar.mp3",
-    category: "الحديث",
+    category: "مصطلح الحديث",
   },
   {
     title: "عمدة الأحكام",
@@ -117,7 +117,7 @@ const files = [
   {
     title: "الشاطبية",
     url: "https://files.a-alqasim.com/audio/Mutoon/MahmudHaleem/0814AsShaatibiyyah_MahmudHaleem.mp3",
-    category: "التجويد",
+    category: "التجويد و القراءات",
   },
   {
     title: "الحموية",
@@ -132,7 +132,7 @@ const files = [
   {
     title: "الجزرية",
     url: "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0803AlJazariyah_AbdulAzizAsSini.mp3",
-    category: "التجويد",
+    category: "التجويد و القراءات",
   },
   {
     title: "كشف الشبهات",
@@ -147,12 +147,12 @@ const files = [
   {
     title: "لامية الأفعال",
     url: "https://files.a-alqasim.com/audio/Mutoon/YusufAlAynaaty/0810LaamiyyahAlAfaal_YusufAlAynaaty.mp3",
-    category: "النحو",
+    category: "الصرف",
   },
   {
     title: "مقدمة في أصول التفسير",
     url: "https://files.a-alqasim.com/audio/Mutoon/SayfAlRahmaanShaaheen/0812MuqaddimahTafseer_SayfAlRahmaanShaaheen.mp3",
-    category: "التفسير",
+    category: "التفسير و أصوله",
   },
   {
     title: "مائة المعاني و البيان",
@@ -167,22 +167,22 @@ const files = [
   {
     title: "حصن المسلم",
     url: "https://media.islamway.net/audiobooks/15-HDrihim_HossnMoslim256.mp3",
-    category: "الأذكار",
+    category: "الحديث",
   },
   {
     title: "ذوق الصلاة لابن القيم",
     url: "https://media.islamway.net/audiobooks/4651/15_RHlibh_ThouqSlat.mp3",
-    category: "الرقائق",
+    category: "كتب صوتية",
   },
   {
     title: "الذل و الانكسار للعزيز الجبار لابن رجب",
     url: "https://media.islamway.net/audiobooks/4651/15_RHlibh_ThilEnksarIbnrajab64.mp3",
-    category: "الرقائق",
+    category: "كتب صوتية",
   },
   {
     title: "شرح حديث ما ذئبان جائعان لابن رجب",
     url: "https://media.islamway.net/audiobooks/4651/15_RFHlibh_Theban.mp3",
-    category: "الحديث",
+    category: "كتب صوتية",
   },
 ];
 
