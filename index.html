@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>إذاعة المتون الشرعية</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="language-switch">English | <strong>عربي</strong></div>
+        <h1>إذاعة المتون الشرعية</h1>
+        <div class="search-container">
+          <input type="text" placeholder="ابحث عن متن  ..." />
+        </div>
+        <div class="categories">
+          <button class="active">الكل</button>
+          <button>الفقه</button>
+          <button>العقيدة</button>
+          <button>الحديث</button>
+          <button>التفسير</button>
+          <button>السيرة</button>
+          <button>الأصول</button>
+          <button>النحو</button>
+          <button>التجويد</button>
+          <button id="random-play">متن عشوائي</button>
+          <button>المفضلة</button>
+        </div>
+      </header>
+
+      <div class="section-audio">
+        <audio id="player" controls autoplay loop></audio>
+      </div>
+
+      <section class="cards"></section>
+    </div>
+    <script src="./background.js"></script>
+  </body>
+</html>

@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "Moton Station",
+  "version": "1.0",
+  "description": "استمع إلي المتون الشرعية بأصوات القراء المفضلين",
+  "action": {
+    "default_popup": "index.html"
+  },
+  "permissions": ["storage"],
+  "web_accessible_resources": [
+    {
+      "resources": ["audio/**/*.mp3"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

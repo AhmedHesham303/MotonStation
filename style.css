@@ -1,0 +1,174 @@
+/* body {
+  direction: rtl;
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  text-align: center;
+  padding: 50px;
+}
+select,
+audio {
+  margin: 20px;
+  padding: 10px;
+  font-size: 1.2rem;
+} */
+
+* {
+  box-sizing: border-box;
+  font-family: "Cairo", sans-serif;
+}
+
+html {
+  font-size: 62.5%;
+  font-weight: bold;
+}
+
+body {
+  margin: 0;
+  background-color: #f0f8ff;
+  color: #333;
+  width: 60rem;
+  height: 50rem;
+}
+
+header {
+  background-color: #008baf;
+  color: white;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  border-bottom-left-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+  position: relative;
+}
+
+h1 {
+  font-size: 4rem;
+}
+
+.language-switch {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  color: white;
+  font-size: 1.6rem;
+}
+
+.search-container {
+  margin: 1rem auto;
+  text-align: center;
+}
+
+.search-container input {
+  padding: 0.6rem 1rem;
+  border-radius: 3rem;
+  border: none;
+  width: 80%;
+}
+
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  row-gap: 1rem;
+  padding: 1rem;
+}
+
+.categories button {
+  background-color: #e0f3f8;
+  border: none;
+  border-radius: 2rem;
+  padding: 0.4rem 1rem;
+}
+
+.categories button:hover {
+  cursor: pointer;
+}
+
+.categories .active {
+  background-color: #ff9800;
+  color: white;
+}
+
+.section-audio {
+  margin: 2rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.section-audio audio {
+  background-color: #008baf;
+  border-radius: 1rem;
+  padding: 1rem;
+  width: 90%;
+  max-width: 40rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.section-controls button {
+  background-color: #ff9800;
+  border: none;
+  border-radius: 2rem;
+  padding: 0.4rem 1rem;
+  color: white;
+  cursor: pointer;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.card {
+  background-color: white;
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card h3 {
+  margin: 1rem 0 0.5rem;
+  font-size: 2rem;
+}
+
+.card-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card .play {
+  background-color: #00bcd4;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.card .fav {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #888;
+  cursor: pointer;
+}
+
+.card .fav.active {
+  color: red;
+}
