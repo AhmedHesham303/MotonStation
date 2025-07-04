@@ -1,17 +1,3 @@
-/* body {
-  direction: rtl;
-  font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
-  text-align: center;
-  padding: 50px;
-}
-select,
-audio {
-  margin: 20px;
-  padding: 10px;
-  font-size: 1.2rem;
-} */
-
 * {
   box-sizing: border-box;
   font-family: "Cairo", sans-serif;
@@ -28,6 +14,31 @@ body {
   color: #333;
   width: 60rem;
   height: 50rem;
+}
+
+/* html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+} */
+
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.upper-part {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: #f0f8ff;
+}
+
+.scrollable-content {
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 2rem;
 }
 
 header {
