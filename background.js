@@ -101,6 +101,59 @@ const files = [
     title: "الحموية",
     url: "          https://files.a-alqasim.com/audio/Mutoon/YahfazAsShanqiti/0815AlHamawiyyah_YahfazAsShanqiti.mp3",
   },
+  {
+    title: "ألفية العراقي في السيرة",
+    url: "  https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0807AlfiyyahAlIraaqiSeerah_AbdulAzizAsSini.mp3",
+  },
+  {
+    title: "ألفية العراقي في السيرة",
+    url: "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0803AlJazariyah_AbdulAzizAsSini.mp3",
+  },
+  {
+    title: "الجزرية",
+    url: "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0803AlJazariyah_AbdulAzizAsSini.mp3",
+  },
+  {
+    title: "كشف الشبهات",
+    url: "https://files.a-alqasim.com/audio/Mutoon/AbdulGhaniSaadiqAlFaqeeh/0804Kashf_AbdulGhaniSaadiqAlFaqeeh.mp3",
+  },
+  {
+    title: "الأرجوزة الميئية",
+    url: "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0811AlMeiyyahSeerah_AbdulAzizAsSini.mp3",
+  },
+  {
+    title: "لامية الأفعال",
+    url: "https://files.a-alqasim.com/audio/Mutoon/YusufAlAynaaty/0810LaamiyyahAlAfaal_YusufAlAynaaty.mp3",
+  },
+  {
+    title: "مقدمة في أصول التفسير",
+    url: "https://files.a-alqasim.com/audio/Mutoon/SayfAlRahmaanShaaheen/0812MuqaddimahTafseer_SayfAlRahmaanShaaheen.mp3",
+  },
+  {
+    title: "مائة المعاني و البيان",
+    url: "https://files.a-alqasim.com/audio/Mutoon/YusufAlAynaaty/0813MiatAlMaaniWaAlBayaan_YusufAlAynaaty.mp3",
+  },
+
+  {
+    title: "نونية القحطاني",
+    url: "https://media.islamway.net/lessons/scho864/347_Fares3abbad_NooniatAlQa7tany.mp3",
+  },
+  {
+    title: "حصن المسلم",
+    url: "https://media.islamway.net/audiobooks/15-HDrihim_HossnMoslim256.mp3",
+  },
+  {
+    title: "ذوق الصلاة لابن القيم",
+    url: " https://media.islamway.net/audiobooks/4651/15_RHlibh_ThouqSlat.mp3",
+  },
+  {
+    title: "الذل و الانكسار للعزيز الجبار لابن رجب",
+    url: " https://media.islamway.net/audiobooks/4651/15_RHlibh_ThilEnksarIbnrajab64.mp3",
+  },
+  {
+    title: "شرح حديث ما ذئبان جائعان لابن رجب",
+    url: " https://media.islamway.net/audiobooks/4651/15_RFHlibh_Theban.mp3",
+  },
 ];
 
 function playFromTime(file, button) {
@@ -123,16 +176,6 @@ function playFromTime(file, button) {
     { once: true }
   );
 }
-// function playFromTime(file, button) {
-//   if (currentPlayButton) {
-//     currentPlayButton.textContent = "▶";
-//   }
-//   currentPlayButton = button;
-//   button.textContent = "❚❚";
-//   audio.src = file.url;
-//   audio.currentTime = 0;
-//   audio.play();
-// }
 
 function createCard(file) {
   const card = document.createElement("div");
@@ -168,28 +211,3 @@ randomButton.addEventListener("click", () => {
   const randomIndex = Math.floor(Math.random() * files.length);
   playFromTime(files[randomIndex]);
 });
-
-// تحميل كل الملفات الصوتية في الخلفية
-// files.forEach((file) => {
-//   const audioPreload = new Audio();
-//   audioPreload.src = file.url;
-//   audioPreload.preload = "auto";
-// });
-
-// async function getCacheSize(cacheName) {
-//   const cache = await caches.open(cacheName);
-//   const requests = await cache.keys();
-//   let totalSize = 0;
-
-//   for (const req of requests) {
-//     const response = await cache.match(req);
-//     const blob = await response.blob();
-//     totalSize += blob.size;
-//   }
-
-//   return (totalSize / 1024 / 1024).toFixed(2); // MB
-// }
-
-// getCacheSize("moton-cache").then((size) => {
-//   console.log(`Cache size: ${size} MB`);
-// });
