@@ -6,97 +6,135 @@ let currentPlayButton = null;
 const files = [
   {
     title: "الأذكار والآداب",
-    url: "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0101AlAthkaar_AbdulAzizAsSini.mp3",
+    url: [
+      "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0101AlAthkaar_AbdulAzizAsSini.mp3",
+    ],
     category: "الحديث و علومه",
   },
   {
     title: "نواقض الإسلام",
-    url: "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0203NawaaqidAlIslaam_AbdulAzizAsSini.mp3",
+    url: [
+      "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0203NawaaqidAlIslaam_AbdulAzizAsSini.mp3",
+    ],
     category: "العقيدة",
   },
   {
     title: "القواعد الأربع",
-    url: "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0202AlQawaidAlArba_AbdulAzizAsSini.mp3",
+    url: [
+      "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0202AlQawaidAlArba_AbdulAzizAsSini.mp3",
+    ],
     category: "العقيدة",
   },
   {
     title: "الأصول الثلاثة ودليلها",
-    url: "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0201AlUsulAtThalaath_AbdulAzizAsSini.mp3",
+    url: [
+      "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0201AlUsulAtThalaath_AbdulAzizAsSini.mp3",
+    ],
     category: "العقيدة",
   },
   {
     title: "الأربعين النووية",
-    url: "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0204AlArbaunAnNawawiyah_AbdulAzizAsSini.mp3",
+    url: [
+      "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0204AlArbaunAnNawawiyah_AbdulAzizAsSini.mp3",
+    ],
     category: "الحديث و علومه",
   },
   {
     title: "تحفة الأطفال",
-    url: "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0301ThufatUlAtfaal_AbdulAzizAsSini.mp3",
+    url: [
+      "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0301ThufatUlAtfaal_AbdulAzizAsSini.mp3",
+    ],
     category: "التجويد و القراءات",
   },
   {
     title: "شروط الصلاة وأركانها وواجباتها",
-    url: "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0302ShurutAsSalaah_AbdulAzizAsSini.mp3",
+    url: [
+      "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0302ShurutAsSalaah_AbdulAzizAsSini.mp3",
+    ],
     category: "الفقه و علومه",
   },
   {
     title: "كتاب التوحيد",
-    url: "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0303KitaabAtTawheed_AbdulAzizAsSini.mp3",
+    url: [
+      "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0303KitaabAtTawheed_AbdulAzizAsSini.mp3",
+    ],
     category: "العقيدة",
   },
   {
     title: "منظومة البيقونية",
-    url: "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0401AlBayqooni_AbdulAzizAsSini.mp3",
+    url: [
+      "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0401AlBayqooni_AbdulAzizAsSini.mp3",
+    ],
     category: "الحديث و مصطلحه",
   },
   {
     title: "قصيدة أبي إسحاق الإلبيري",
-    url: "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0402AlIlbiri_AbdulAzizAsSini.mp3",
+    url: [
+      "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0402AlIlbiri_AbdulAzizAsSini.mp3",
+    ],
     category: "اللغة",
   },
   {
     title: "المقدمة الآجرومية",
-    url: "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0403AlAajurrumiyyah_AbdulAzizAsSini.mp3",
+    url: [
+      "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0403AlAajurrumiyyah_AbdulAzizAsSini.mp3",
+    ],
     category: "اللغة",
   },
   {
     title: "العقيدة الواسطية",
-    url: "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0404AlWaasitiyyah_AbdulAzizAsSini.mp3",
+    url: [
+      "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0404AlWaasitiyyah_AbdulAzizAsSini.mp3",
+    ],
     category: "العقيدة",
   },
   {
     title: "الورقات",
-    url: "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0501AlWaraqat_AbdulAzizAsSini.mp3",
+    url: [
+      "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0501AlWaraqat_AbdulAzizAsSini.mp3",
+    ],
     category: "الفقه و علومه",
   },
   {
     title: "عنوان الحكم",
-    url: "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0502UnwanAlHikm_AbdulAzizAsSini.mp3",
+    url: [
+      "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0502UnwanAlHikm_AbdulAzizAsSini.mp3",
+    ],
     category: "الأدب و الرقائق",
   },
   {
     title: "الرحبية",
-    url: "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0503ArRahbiyah_AbdulAzizAsSini.mp3",
+    url: [
+      "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0503ArRahbiyah_AbdulAzizAsSini.mp3",
+    ],
     category: "الفقه و علومه",
   },
   {
     title: "العقيدة الطحاوية",
-    url: "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0504AtTahawiyah_AbdulAzizAsSini.mp3",
+    url: [
+      "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0504AtTahawiyah_AbdulAzizAsSini.mp3",
+    ],
     category: "العقيدة",
   },
   {
     title: "بلوغ المرام",
-    url: "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0601Buloogh_AbdulAzizAsSini.mp3",
+    url: [
+      "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0601Buloogh_AbdulAzizAsSini.mp3",
+    ],
     category: "الحديث و علومه",
   },
   {
     title: "زاد المستقنع في اختصار المقنع",
-    url: "https://files.a-alqasim.com/audio/Mutoon/MaajidMustafa/0602Zaad_MaajidMustafa.mp3",
+    url: [
+      "https://files.a-alqasim.com/audio/Mutoon/MaajidMustafa/0602Zaad_MaajidMustafa.mp3",
+    ],
     category: "الفقه و علومه",
   },
   {
     title: "ألفية ابن مالك",
-    url: "https://files.a-alqasim.com/audio/Mutoon/AbdulGhaniSaadiqAlFaqeeh/0603AlfiyyahIbnMaalik_AbdulGhaniSaadiqAlFaqeeh.mp3",
+    url: [
+      "https://files.a-alqasim.com/audio/Mutoon/AbdulGhaniSaadiqAlFaqeeh/0603AlfiyyahIbnMaalik_AbdulGhaniSaadiqAlFaqeeh.mp3",
+    ],
     category: "اللغة",
   },
   {
@@ -191,15 +229,29 @@ function playFromTime(file, button) {
   if (currentPlayButton) {
     currentPlayButton.textContent = "▶";
   }
+
   currentPlayButton = button;
   button.textContent = "❚❚";
-  audio.src = file.url;
+
+  const now = new Date();
+  const secondsToday =
+    now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds();
+
+  let selectedUrl;
+
+  if (Array.isArray(file.url)) {
+    const index = secondsToday % file.url.length;
+    console.log("Selected URL index:", index);
+    selectedUrl = file.url[index];
+  } else {
+    selectedUrl = file.url;
+  }
+
+  audio.src = selectedUrl;
+
   audio.addEventListener(
     "loadedmetadata",
     () => {
-      const now = new Date();
-      const secondsToday =
-        now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds();
       const seekTime = secondsToday % audio.duration;
       audio.currentTime = seekTime;
       audio.play();
