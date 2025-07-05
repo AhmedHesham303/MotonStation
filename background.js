@@ -1,8 +1,3 @@
-const audio = document.getElementById("player");
-const cardsContainer = document.querySelector(".cards");
-const randomButton = document.getElementById("random-play");
-let currentPlayButton = null;
-
 const files = [
   {
     title: "الأذكار والآداب",
@@ -325,13 +320,29 @@ const files = [
     category: "كتب صوتية",
   },
 ];
+// ==== DOM Elements ====
+const audio = document.getElementById("player");
+const cardsContainer = document.querySelector(".cards");
+const randomButton = document.getElementById("random-play");
+const categoryBtn = document.querySelectorAll(".categories button");
 
+// ==== State ====
+let currentPlayButton = null;
 const curFiles = [...files];
-function playFromTime(file, button) {
-  if (currentPlayButton) {
-    currentPlayButton.textContent = "▶";
-  }
+const selectedCategory = "الكل";
 
+// ==== Utility Functions ====
+function eraseElementClass(elements, className) {
+  elements.forEach((el) => el.classList.remove(className));
+}
+
+function addElementClass(element, className) {
+  element.classList.add(className);
+}
+
+// ==== Playback Logic ====
+function playFromTime(file, button) {
+  if (currentPlayButton) currentPlayButton.textContent = "▶";
   currentPlayButton = button;
   button.textContent = "❚❚";
 
@@ -339,15 +350,8 @@ function playFromTime(file, button) {
   const secondsToday =
     now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds();
 
-  let selectedUrl;
-
-  if (Array.isArray(file.url)) {
-    const index = secondsToday % file.url.length;
-    console.log("Selected URL index:", index);
-    selectedUrl = file.url[index];
-  } else {
-    selectedUrl = file.url;
-  }
+  const index = secondsToday % file.url.length;
+  const selectedUrl = file.url[index];
 
   audio.src = selectedUrl;
 
@@ -362,6 +366,7 @@ function playFromTime(file, button) {
   );
 }
 
+// ==== Card UI ====
 function createCard(file) {
   const card = document.createElement("div");
   card.className = "card";
@@ -383,21 +388,13 @@ function createCard(file) {
 
   right.appendChild(playBtn);
   right.appendChild(title);
-
   card.appendChild(right);
   card.appendChild(fav);
 
   cardsContainer.appendChild(card);
 }
-const selectedCategory = "الكل";
 
-curFiles.forEach((file) => createCard(file));
-
-randomButton.addEventListener("click", () => {
-  const randomIndex = Math.floor(Math.random() * files.length);
-  playFromTime(files[randomIndex]);
-});
-
+// ==== Filtering ====
 function displayByCategory(selectedCategory) {
   const filteredFiles =
     selectedCategory === "الكل"
@@ -407,18 +404,8 @@ function displayByCategory(selectedCategory) {
   cardsContainer.innerHTML = "";
   filteredFiles.forEach((file) => createCard(file));
 }
-const categoryBtn = document.querySelectorAll(".categories button");
 
-function eraseElementClass(elements, className) {
-  elements.forEach((btn) => {
-    btn.classList.remove(className);
-  });
-}
-
-function addElementClass(element, className) {
-  element.classList.add(className);
-}
-
+// ==== Event Binding ====
 function handleCategoryClick() {
   categoryBtn.forEach((btn) => {
     btn.addEventListener("click", () => {
@@ -429,4 +416,11 @@ function handleCategoryClick() {
   });
 }
 
+randomButton.addEventListener("click", () => {
+  const randomIndex = Math.floor(Math.random() * files.length);
+  playFromTime(files[randomIndex]);
+});
+
+// ==== Init ====
+curFiles.forEach((file) => createCard(file));
 handleCategoryClick();
