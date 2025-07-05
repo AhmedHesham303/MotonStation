@@ -389,7 +389,7 @@ function createCard(file) {
 
   cardsContainer.appendChild(card);
 }
-const selectedCategory = "العقيدة";
+const selectedCategory = "الكل";
 
 curFiles.forEach((file) => createCard(file));
 
