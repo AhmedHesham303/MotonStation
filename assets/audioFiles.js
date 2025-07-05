@@ -267,7 +267,7 @@ const files = [
   },
 
   {
-    title: "معالم السنن",
+    title: "معالم السنة",
     url: [
       "https://media.islamway.net/audiobooks/4912/Ma3alem_Sunnah_01.mp3",
       "https://media.islamway.net/audiobooks/4912/Ma3alem_Sunnah_02.mp3",
