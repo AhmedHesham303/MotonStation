@@ -389,6 +389,7 @@ function createCard(file) {
 
   cardsContainer.appendChild(card);
 }
+const selectedCategory = "العقيدة";
 
 curFiles.forEach((file) => createCard(file));
 
@@ -398,11 +399,12 @@ randomButton.addEventListener("click", () => {
 });
 
 function displayByCategory(selectedCategory) {
-  const filteredFiles = files.filter(
-    (file) => file.category === selectedCategory
-  );
-  cardsContainer.innerHTML = "";
+  const filteredFiles =
+    selectedCategory === "الكل"
+      ? files
+      : files.filter((file) => file.category === selectedCategory);
 
+  cardsContainer.innerHTML = "";
   filteredFiles.forEach((file) => createCard(file));
 }
 const categoryBtn = document.querySelectorAll(".categories button");
@@ -427,6 +429,4 @@ function handleCategoryClick() {
   });
 }
 
-const selectedCategory = "العقيدة";
 handleCategoryClick();
-displayByCategory(selectedCategory);
