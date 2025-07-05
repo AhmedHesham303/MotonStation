@@ -7,7 +7,7 @@ const files = [
   {
     title: "الأذكار والآداب",
     url: "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0101AlAthkaar_AbdulAzizAsSini.mp3",
-    category: "الحديث",
+    category: "الحديث و علومه",
   },
   {
     title: "نواقض الإسلام",
@@ -27,7 +27,7 @@ const files = [
   {
     title: "الأربعين النووية",
     url: "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0204AlArbaunAnNawawiyah_AbdulAzizAsSini.mp3",
-    category: "الحديث",
+    category: "الحديث و علومه",
   },
   {
     title: "تحفة الأطفال",
@@ -37,7 +37,7 @@ const files = [
   {
     title: "شروط الصلاة وأركانها وواجباتها",
     url: "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0302ShurutAsSalaah_AbdulAzizAsSini.mp3",
-    category: "الفقه",
+    category: "الفقه و علومه",
   },
   {
     title: "كتاب التوحيد",
@@ -47,17 +47,17 @@ const files = [
   {
     title: "منظومة البيقونية",
     url: "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0401AlBayqooni_AbdulAzizAsSini.mp3",
-    category: "الحديث",
+    category: "الحديث و مصطلحه",
   },
   {
     title: "قصيدة أبي إسحاق الإلبيري",
     url: "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0402AlIlbiri_AbdulAzizAsSini.mp3",
-    category: "النحو",
+    category: "اللغة",
   },
   {
     title: "المقدمة الآجرومية",
     url: "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0403AlAajurrumiyyah_AbdulAzizAsSini.mp3",
-    category: "النحو",
+    category: "اللغة",
   },
   {
     title: "العقيدة الواسطية",
@@ -67,17 +67,17 @@ const files = [
   {
     title: "الورقات",
     url: "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0501AlWaraqat_AbdulAzizAsSini.mp3",
-    category: "أصول الفقه",
+    category: "الفقه و علومه",
   },
   {
     title: "عنوان الحكم",
     url: "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0502UnwanAlHikm_AbdulAzizAsSini.mp3",
-    category: "الأدب",
+    category: "الأدب و الرقائق",
   },
   {
     title: "الرحبية",
     url: "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0503ArRahbiyah_AbdulAzizAsSini.mp3",
-    category: "الفرائض",
+    category: "الفقه و علومه",
   },
   {
     title: "العقيدة الطحاوية",
@@ -87,32 +87,32 @@ const files = [
   {
     title: "بلوغ المرام",
     url: "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0601Buloogh_AbdulAzizAsSini.mp3",
-    category: "الحديث",
+    category: "الحديث و علومه",
   },
   {
     title: "زاد المستقنع في اختصار المقنع",
     url: "https://files.a-alqasim.com/audio/Mutoon/MaajidMustafa/0602Zaad_MaajidMustafa.mp3",
-    category: "الفقه",
+    category: "الفقه و علومه",
   },
   {
     title: "ألفية ابن مالك",
     url: "https://files.a-alqasim.com/audio/Mutoon/AbdulGhaniSaadiqAlFaqeeh/0603AlfiyyahIbnMaalik_AbdulGhaniSaadiqAlFaqeeh.mp3",
-    category: "النحو",
+    category: "اللغة",
   },
   {
     title: "نخبة الفكر",
     url: "https://files.a-alqasim.com/audio/Mutoon/IbraheemAlMihdaar/0801Nukhbah_IbraheemAlMihdaar.mp3",
-    category: "مصطلح الحديث",
+    category: "الحديث و علومه",
   },
   {
     title: "عمدة الأحكام",
     url: "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0802AlUmdatuFilAhkaam_AbdulAzizAsSini.mp3",
-    category: "الحديث",
+    category: "الحديث و علومه",
   },
   {
     title: "ألفية العراقي في الحديث",
     url: "https://files.a-alqasim.com/audio/Mutoon/YusufAlAynaaty/0805AlfiyyahAlIraaqi_YusufAlAynaaty.mp3",
-    category: "الحديث",
+    category: "الحديث و علومه",
   },
   {
     title: "الشاطبية",
@@ -147,17 +147,17 @@ const files = [
   {
     title: "لامية الأفعال",
     url: "https://files.a-alqasim.com/audio/Mutoon/YusufAlAynaaty/0810LaamiyyahAlAfaal_YusufAlAynaaty.mp3",
-    category: "الصرف",
+    category: "اللغة",
   },
   {
     title: "مقدمة في أصول التفسير",
     url: "https://files.a-alqasim.com/audio/Mutoon/SayfAlRahmaanShaaheen/0812MuqaddimahTafseer_SayfAlRahmaanShaaheen.mp3",
-    category: "التفسير و أصوله",
+    category: "علوم القرآن و التفسير",
   },
   {
     title: "مائة المعاني و البيان",
     url: "https://files.a-alqasim.com/audio/Mutoon/YusufAlAynaaty/0813MiatAlMaaniWaAlBayaan_YusufAlAynaaty.mp3",
-    category: "البلاغة",
+    category: "اللغة",
   },
   {
     title: "نونية القحطاني",
@@ -167,7 +167,7 @@ const files = [
   {
     title: "حصن المسلم",
     url: "https://media.islamway.net/audiobooks/15-HDrihim_HossnMoslim256.mp3",
-    category: "الحديث",
+    category: "الحديث و علومه",
   },
   {
     title: "ذوق الصلاة لابن القيم",
