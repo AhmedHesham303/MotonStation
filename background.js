@@ -405,13 +405,24 @@ function displayByCategory(selectedCategory) {
 
   filteredFiles.forEach((file) => createCard(file));
 }
-const categoryBtn = document.querySelectorAll(".container button");
+const categoryBtn = document.querySelectorAll(".categories button");
+
+function eraseElementClass(elements, className) {
+  elements.forEach((btn) => {
+    btn.classList.remove(className);
+  });
+}
+
+function addElementClass(element, className) {
+  element.classList.add(className);
+}
 
 function handleCategoryClick() {
-  const categoryBtn = document.querySelectorAll(".categories button");
   categoryBtn.forEach((btn) => {
     btn.addEventListener("click", () => {
       displayByCategory(btn.textContent);
+      eraseElementClass(categoryBtn, "active");
+      addElementClass(btn, "active");
     });
   });
 }
