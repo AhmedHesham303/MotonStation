@@ -67,7 +67,7 @@ const files = [
     url: [
       "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0402AlIlbiri_AbdulAzizAsSini.mp3",
     ],
-    category: "اللغة",
+    category: "الأدب و الرقائق",
   },
   {
     title: "المقدمة الآجرومية",
