@@ -186,6 +186,7 @@ const files = [
   },
 ];
 
+const curFiles = [...files];
 function playFromTime(file, button) {
   if (currentPlayButton) {
     currentPlayButton.textContent = "▶";
@@ -235,7 +236,7 @@ function createCard(file) {
   cardsContainer.appendChild(card);
 }
 
-files.forEach((file) => createCard(file));
+curFiles.forEach((file) => createCard(file));
 
 randomButton.addEventListener("click", () => {
   const randomIndex = Math.floor(Math.random() * files.length);
