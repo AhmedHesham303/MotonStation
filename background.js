@@ -211,8 +211,8 @@ function createCard(file) {
   const card = document.createElement("div");
   card.className = "card";
 
-  const top = document.createElement("div");
-  top.className = "card-top";
+  const right = document.createElement("div");
+  right.className = "card-right";
 
   const fav = document.createElement("span");
   fav.className = "fav";
@@ -223,14 +223,14 @@ function createCard(file) {
   playBtn.textContent = "▶";
   playBtn.onclick = () => playFromTime(file, playBtn);
 
-  top.appendChild(fav);
-  top.appendChild(playBtn);
-
   const title = document.createElement("h3");
   title.textContent = file.title;
 
-  card.appendChild(top);
-  card.appendChild(title);
+  right.appendChild(playBtn);
+  right.appendChild(title);
+
+  card.appendChild(right);
+  card.appendChild(fav);
 
   cardsContainer.appendChild(card);
 }
