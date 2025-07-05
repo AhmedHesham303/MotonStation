@@ -22,12 +22,6 @@
     "https://files.a-alqasim.com/*",
     "https://media.islamway.net/*"
   ],
-  "web_accessible_resources": [
-    {
-      "resources": ["audio/**/*.mp3"],
-      "matches": ["<all_urls>"]
-    }
-  ],
   "content_security_policy": {
     "extension_pages": "script-src 'self'; object-src 'self';"
   }
