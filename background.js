@@ -139,88 +139,123 @@ const files = [
   },
   {
     title: "نخبة الفكر",
-    url: "https://files.a-alqasim.com/audio/Mutoon/IbraheemAlMihdaar/0801Nukhbah_IbraheemAlMihdaar.mp3",
+    url: [
+      "https://files.a-alqasim.com/audio/Mutoon/IbraheemAlMihdaar/0801Nukhbah_IbraheemAlMihdaar.mp3",
+    ],
     category: "الحديث و علومه",
   },
   {
     title: "عمدة الأحكام",
-    url: "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0802AlUmdatuFilAhkaam_AbdulAzizAsSini.mp3",
+    url: [
+      "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0802AlUmdatuFilAhkaam_AbdulAzizAsSini.mp3",
+    ],
     category: "الحديث و علومه",
   },
   {
     title: "ألفية العراقي في الحديث",
-    url: "https://files.a-alqasim.com/audio/Mutoon/YusufAlAynaaty/0805AlfiyyahAlIraaqi_YusufAlAynaaty.mp3",
+    url: [
+      "https://files.a-alqasim.com/audio/Mutoon/YusufAlAynaaty/0805AlfiyyahAlIraaqi_YusufAlAynaaty.mp3",
+    ],
     category: "الحديث و علومه",
   },
   {
     title: "الشاطبية",
-    url: "https://files.a-alqasim.com/audio/Mutoon/MahmudHaleem/0814AsShaatibiyyah_MahmudHaleem.mp3",
+    url: [
+      "https://files.a-alqasim.com/audio/Mutoon/MahmudHaleem/0814AsShaatibiyyah_MahmudHaleem.mp3",
+    ],
     category: "التجويد و القراءات",
   },
   {
     title: "الحموية",
-    url: "https://files.a-alqasim.com/audio/Mutoon/YahfazAsShanqiti/0815AlHamawiyyah_YahfazAsShanqiti.mp3",
+    url: [
+      "https://files.a-alqasim.com/audio/Mutoon/YahfazAsShanqiti/0815AlHamawiyyah_YahfazAsShanqiti.mp3",
+    ],
     category: "العقيدة",
   },
   {
     title: "ألفية العراقي في السيرة",
-    url: "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0807AlfiyyahAlIraaqiSeerah_AbdulAzizAsSini.mp3",
+    url: [
+      "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0807AlfiyyahAlIraaqiSeerah_AbdulAzizAsSini.mp3",
+    ],
     category: "السيرة",
   },
   {
     title: "الجزرية",
-    url: "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0803AlJazariyah_AbdulAzizAsSini.mp3",
+    url: [
+      "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0803AlJazariyah_AbdulAzizAsSini.mp3",
+    ],
     category: "التجويد و القراءات",
   },
   {
     title: "كشف الشبهات",
-    url: "https://files.a-alqasim.com/audio/Mutoon/AbdulGhaniSaadiqAlFaqeeh/0804Kashf_AbdulGhaniSaadiqAlFaqeeh.mp3",
+    url: [
+      "https://files.a-alqasim.com/audio/Mutoon/AbdulGhaniSaadiqAlFaqeeh/0804Kashf_AbdulGhaniSaadiqAlFaqeeh.mp3",
+    ],
     category: "العقيدة",
   },
   {
     title: "الأرجوزة الميئية",
-    url: "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0811AlMeiyyahSeerah_AbdulAzizAsSini.mp3",
+    url: [
+      "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0811AlMeiyyahSeerah_AbdulAzizAsSini.mp3",
+    ],
     category: "السيرة",
   },
   {
     title: "لامية الأفعال",
-    url: "https://files.a-alqasim.com/audio/Mutoon/YusufAlAynaaty/0810LaamiyyahAlAfaal_YusufAlAynaaty.mp3",
+    url: [
+      "https://files.a-alqasim.com/audio/Mutoon/YusufAlAynaaty/0810LaamiyyahAlAfaal_YusufAlAynaaty.mp3",
+    ],
     category: "اللغة",
   },
   {
     title: "مقدمة في أصول التفسير",
-    url: "https://files.a-alqasim.com/audio/Mutoon/SayfAlRahmaanShaaheen/0812MuqaddimahTafseer_SayfAlRahmaanShaaheen.mp3",
+    url: [
+      "https://files.a-alqasim.com/audio/Mutoon/SayfAlRahmaanShaaheen/0812MuqaddimahTafseer_SayfAlRahmaanShaaheen.mp3",
+    ],
     category: "علوم القرآن و التفسير",
   },
   {
     title: "مائة المعاني و البيان",
-    url: "https://files.a-alqasim.com/audio/Mutoon/YusufAlAynaaty/0813MiatAlMaaniWaAlBayaan_YusufAlAynaaty.mp3",
+    url: [
+      "https://files.a-alqasim.com/audio/Mutoon/YusufAlAynaaty/0813MiatAlMaaniWaAlBayaan_YusufAlAynaaty.mp3",
+    ],
     category: "اللغة",
   },
   {
     title: "نونية القحطاني",
-    url: "https://media.islamway.net/lessons/scho864/347_Fares3abbad_NooniatAlQa7tany.mp3",
+    url: [
+      "https://media.islamway.net/lessons/scho864/347_Fares3abbad_NooniatAlQa7tany.mp3",
+    ],
     category: "العقيدة",
   },
   {
     title: "حصن المسلم",
-    url: "https://media.islamway.net/audiobooks/15-HDrihim_HossnMoslim256.mp3",
+    url: [
+      "https://media.islamway.net/audiobooks/15-HDrihim_HossnMoslim256.mp3",
+    ],
     category: "الحديث و علومه",
   },
   {
     title: "ذوق الصلاة لابن القيم",
-    url: "https://media.islamway.net/audiobooks/4651/15_RHlibh_ThouqSlat.mp3",
+    url: ["https://media.islamway.net/audiobooks/4651/15_RHlibh_ThouqSlat.mp3"],
     category: "كتب صوتية",
   },
   {
     title: "الذل و الانكسار للعزيز الجبار لابن رجب",
-    url: "https://media.islamway.net/audiobooks/4651/15_RHlibh_ThilEnksarIbnrajab64.mp3",
+    url: [
+      "https://media.islamway.net/audiobooks/4651/15_RHlibh_ThilEnksarIbnrajab64.mp3",
+    ],
     category: "كتب صوتية",
   },
   {
     title: "شرح حديث ما ذئبان جائعان لابن رجب",
-    url: "https://media.islamway.net/audiobooks/4651/15_RFHlibh_Theban.mp3",
+    url: ["https://media.islamway.net/audiobooks/4651/15_RFHlibh_Theban.mp3"],
     category: "كتب صوتية",
+  },
+  {
+    title: "رياض الصالحين",
+    url: ["https://media.islamway.net/lessons/qattan/readalSAlhen/03.mp3"],
+    category: "الحديث و معلومه",
   },
 ];
 
