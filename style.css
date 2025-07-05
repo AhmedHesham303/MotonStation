@@ -41,8 +41,8 @@ header {
 }
 
 h1 {
-  font-size: 4rem;
-  margin: 0;
+  font-size: 2rem;
+  margin-top: 3rem;
 }
 
 .language-switch {
@@ -50,7 +50,7 @@ h1 {
   top: 1rem;
   left: 1rem;
   color: white;
-  font-size: 1.6rem;
+  font-size: 1.2rem;
 }
 
 .search-container {
@@ -79,7 +79,8 @@ h1 {
   border: none;
   border-radius: 2rem;
   padding: 0.4rem 1rem;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
+  font-weight: bold;
 }
 
 .categories button:hover {
@@ -101,7 +102,7 @@ h1 {
 .section-audio audio {
   background-color: #008baf;
   border-radius: 1rem;
-  padding: 1rem;
+  padding: 0.6rem;
   width: 90%;
   max-width: 40rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
@@ -132,7 +133,7 @@ h1 {
 }
 
 .card h3 {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   margin: 0;
   flex: 1;
   text-align: right;
@@ -149,7 +150,7 @@ h1 {
 .card .fav {
   background: none;
   border: none;
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   color: white;
   cursor: pointer;
   margin-left: 1rem;
@@ -164,8 +165,8 @@ h1 {
   color: white;
   border: none;
   border-radius: 50%;
-  width: 3.5rem;
-  height: 3.5rem;
+  width: 3rem;
+  height: 3rem;
   display: flex;
   align-items: center;
   justify-content: center;
