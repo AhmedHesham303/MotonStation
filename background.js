@@ -396,3 +396,26 @@ randomButton.addEventListener("click", () => {
   const randomIndex = Math.floor(Math.random() * files.length);
   playFromTime(files[randomIndex]);
 });
+
+function displayByCategory(selectedCategory) {
+  const filteredFiles = files.filter(
+    (file) => file.category === selectedCategory
+  );
+  cardsContainer.innerHTML = "";
+
+  filteredFiles.forEach((file) => createCard(file));
+}
+const categoryBtn = document.querySelectorAll(".container button");
+
+function handleCategoryClick() {
+  const categoryBtn = document.querySelectorAll(".categories button");
+  categoryBtn.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      displayByCategory(btn.textContent);
+    });
+  });
+}
+
+const selectedCategory = "العقيدة";
+handleCategoryClick();
+displayByCategory(selectedCategory);
