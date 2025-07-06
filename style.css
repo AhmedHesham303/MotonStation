@@ -92,6 +92,8 @@ h1 {
 
 .categories button:hover {
   cursor: pointer;
+  background-color: #ff9800;
+  color: white;
 }
 
 .categories .active {
