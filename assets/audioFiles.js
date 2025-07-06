@@ -231,10 +231,22 @@ const files = [
     category: "الحديث و علومه",
   },
   {
+    title: "قصيدة أبي البقاء الرندي في رثاء الأندلس",
+    url: ["https://media.islamway.net/several/Andalous.mp3"],
+    category: "قصائد و أناشيد مختارة",
+  },
+  {
+    title: "أيا من يدعي الفهم",
+    url: [" https://media.islamway.net//several/197/120.mp3"],
+    category: "قصائد و أناشيد مختارة",
+  },
+
+  {
     title: "ذوق الصلاة لابن القيم",
     url: ["https://media.islamway.net/audiobooks/4651/15_RHlibh_ThouqSlat.mp3"],
     category: "كتب صوتية",
   },
+
   {
     title: "الذل و الانكسار للعزيز الجبار لابن رجب",
     url: [
