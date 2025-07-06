@@ -4,13 +4,30 @@ const cardsContainer = document.querySelector(".cards");
 const randomButton = document.getElementById("random-play");
 const categoryBtn = document.querySelectorAll(".categories button");
 const searchInput = document.querySelector(".search");
-
 // ==== State ====
 let currentPlayButton = null;
 const curFiles = [...files];
 let selectedCategory = "الكل";
 
 // ==== Utility Functions ====
+
+function getFilesFromLocalStorage() {
+  const matchedFiles = [];
+
+  for (let i = 0; i < localStorage.length; i++) {
+    const key = localStorage.key(i);
+
+    // Try to find a file with a matching title
+    const file = files.find((f) => f.title === key);
+
+    if (file) {
+      matchedFiles.push(file);
+    }
+  }
+
+  return matchedFiles;
+}
+
 function eraseElementClass(elements, className) {
   elements.forEach((el) => el.classList.remove(className));
 }
@@ -76,6 +93,25 @@ function createCard(file) {
   fav.className = "fav";
   fav.textContent = "♥";
 
+  // 👉 Restore saved favorite color
+  const savedColor = localStorage.getItem(file.title);
+  if (savedColor) {
+    fav.classList.add("active");
+    fav.style.color = savedColor;
+  }
+
+  // 👉 When clicking the heart icon
+  fav.addEventListener("click", () => {
+    fav.classList.toggle("active");
+    if (fav.classList.contains("active")) {
+      localStorage.setItem(file.title, "#ff9800");
+      fav.style.color = "#ff9800";
+    } else {
+      localStorage.removeItem(file.title);
+      fav.style.color = "white"; // or original default
+    }
+  });
+
   const playBtn = document.createElement("button");
   playBtn.className = "play";
   playBtn.textContent = "▶";
@@ -98,18 +134,19 @@ function createCard(file) {
   card.appendChild(fav);
 
   cardsContainer.appendChild(card);
-  console.log("Card created:", card);
 }
 
 // ==== Filtering ====
 function displayByCategory(selectedCategory) {
   const filteredFiles =
-    selectedCategory === "الكل"
+    selectedCategory === "المفضلة"
+      ? getFilesFromLocalStorage()
+      : selectedCategory === "الكل"
       ? files
       : files.filter((file) => file.category === selectedCategory);
 
   cardsContainer.innerHTML = "";
-  filteredFiles.forEach((file) => createCard(file));
+  filteredFiles.forEach(createCard);
 }
 
 function searchFiles(query) {

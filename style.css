@@ -170,6 +170,10 @@ h1 {
   color: #ff9800;
 }
 
+.card .fav.active {
+  color: #ff9800;
+}
+
 .card .play {
   background-color: #ff9800;
   color: white;
