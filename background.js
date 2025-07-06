@@ -98,6 +98,7 @@ function createCard(file) {
   card.appendChild(fav);
 
   cardsContainer.appendChild(card);
+  console.log("Card created:", card);
 }
 
 // ==== Filtering ====
@@ -137,8 +138,18 @@ searchInput.addEventListener("input", () => {
 });
 
 randomButton.addEventListener("click", () => {
-  const randomIndex = Math.floor(Math.random() * files.length);
-  playFromTime(files[randomIndex]);
+  const randomIndex = Math.floor(Math.random() * files.length); // Pick random file
+  const randomFile = files[randomIndex];
+  console.log(randomFile);
+
+  cardsContainer.innerHTML = ""; // Clear all cards
+
+  createCard(randomFile); // Create and append the card to container
+
+  const lastCard = cardsContainer.querySelector(".card:last-child"); // Get the new card
+  const playBtn = lastCard.querySelector(".card-right .play"); // Get the button inside that card
+
+  playFromTime(randomFile, playBtn); // Play the audio
 });
 
 // ==== Background Utility ====
