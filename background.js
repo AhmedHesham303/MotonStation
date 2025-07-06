@@ -30,7 +30,10 @@ function normalize(text) {
 
 // ==== Playback Logic ====
 function playFromTime(file, button) {
-  if (currentPlayButton) currentPlayButton.textContent = "▶";
+  if (currentPlayButton && currentPlayButton !== button) {
+    currentPlayButton.textContent = "▶";
+  }
+
   currentPlayButton = button;
   button.textContent = "❚❚";
 
@@ -54,6 +57,13 @@ function playFromTime(file, button) {
   );
 }
 
+function stopAudio(button) {
+  if (audio) {
+    audio.pause();
+  }
+  if (button) button.textContent = "▶";
+}
+
 // ==== Card UI ====
 function createCard(file) {
   const card = document.createElement("div");
@@ -69,14 +79,21 @@ function createCard(file) {
   const playBtn = document.createElement("button");
   playBtn.className = "play";
   playBtn.textContent = "▶";
-  playBtn.onclick = () => playFromTime(file, playBtn);
+
+  playBtn.onclick = () => {
+    if (playBtn.textContent === "❚❚") {
+      stopAudio(playBtn);
+      currentPlayButton = null;
+    } else {
+      playFromTime(file, playBtn);
+    }
+  };
 
   const title = document.createElement("h3");
   title.textContent = file.title;
 
   right.appendChild(playBtn);
   right.appendChild(title);
-
   card.appendChild(right);
   card.appendChild(fav);
 
@@ -96,20 +113,17 @@ function displayByCategory(selectedCategory) {
 
 function searchFiles(query) {
   const normalizedQuery = normalize(query);
-  return files.filter(
-    (file) => normalize(file.title).includes(normalizedQuery)
-    // &&
-    // file.category == selectedCategory
+  return files.filter((file) =>
+    normalize(file.title).includes(normalizedQuery)
   );
 }
 
 // ==== Event Binding ====
 function handleCategoryClick() {
   categoryBtn.forEach((btn) => {
-    selectedCategory = btn.textContent;
-
     btn.addEventListener("click", () => {
-      displayByCategory(btn.textContent);
+      selectedCategory = btn.textContent;
+      displayByCategory(selectedCategory);
       eraseElementClass(categoryBtn, "active");
       addElementClass(btn, "active");
     });
