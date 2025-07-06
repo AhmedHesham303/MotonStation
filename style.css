@@ -101,11 +101,27 @@ h1 {
   color: white;
 }
 
-.section-audio {
-  margin-top: 1rem 0;
+.middle-part {
+  padding: 0 2rem;
+  margin: 1rem 0;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+}
+
+.playing-audio {
+  background-color: #008baf;
+  color: white;
+  font-size: 2rem;
+  border-radius: 1rem;
+  padding: 0.5rem 1rem;
+  text-align: center;
+}
+
+.section-audio {
+  width: 100%;
+  text-align: center;
+  display: none;
 }
 
 .section-audio audio {
@@ -113,19 +129,17 @@ h1 {
   border-radius: 1rem;
   padding: 0.6rem;
   width: 90%;
-  max-width: 40rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
-audio.live-audio {
-  display: none; /* hide entire native player */
-}
-
-.section-audio.live::after {
-  content: "🔴 بث مباشر";
+.live-audio {
+  display: none;
   color: #008baf;
   font-weight: bold;
   font-size: 2rem;
+  border-radius: 1rem;
+  padding: 0.5rem 1rem;
+  text-align: center;
 }
 
 /* --- Cards Section --- */

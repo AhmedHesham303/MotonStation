@@ -66,17 +66,14 @@ function playFromTime(file, button) {
   audio.src = selectedUrl;
 
   if (isLive) {
-    // Live stream: hide player and show live label
-    wrapper.classList.add("live");
+    document.querySelector(".section-audio").style.display = "none";
+    document.querySelector(".live-audio").style.display = "block";
     audio.controls = false;
-    audio.classList.add("live-audio");
     audio.play();
   } else {
-    // Normal .mp3 playback
-    wrapper.classList.remove("live");
-    audio.classList.remove("live-audio");
+    document.querySelector(".section-audio").style.display = "block";
+    document.querySelector(".live-audio").style.display = "none";
     audio.controls = true;
-
     audio.addEventListener(
       "loadedmetadata",
       () => {
