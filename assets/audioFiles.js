@@ -147,6 +147,64 @@ const files = [
     category: "الحديث و علومه",
   },
   {
+    title: "إذاعة السنة النبوية",
+    url: ["https://radio.alukah.net/hadith"],
+    category: "الحديث و علومه",
+  },
+  {
+    title: "اللؤلؤ و المرجان في ما اتفق عليه الشيخان",
+    url: [
+      "https://d1.islamhouse.com/data/ar/ih_sounds/chain_01/Alloulou_walmrjan/ar_01_Alloulou_walmrjan.mp3",
+      "https://d1.islamhouse.com/data/ar/ih_sounds/chain_01/Alloulou_walmrjan/ar_02_Alloulou_walmrjan.mp3",
+      "https://d1.islamhouse.com/data/ar/ih_sounds/chain_01/Alloulou_walmrjan/ar_03_Alloulou_walmrjan.mp3",
+      "https://d1.islamhouse.com/data/ar/ih_sounds/chain_01/Alloulou_walmrjan/ar_04_Alloulou_walmrjan.mp3",
+      "https://d1.islamhouse.com/data/ar/ih_sounds/chain_01/Alloulou_walmrjan/ar_05_Alloulou_walmrjan.mp3",
+      "https://d1.islamhouse.com/data/ar/ih_sounds/chain_01/Alloulou_walmrjan/ar_06_Alloulou_walmrjan.mp3",
+      "https://d1.islamhouse.com/data/ar/ih_sounds/chain_01/Alloulou_walmrjan/ar_07_Alloulou_walmrjan.mp3",
+      "https://d1.islamhouse.com/data/ar/ih_sounds/chain_01/Alloulou_walmrjan/ar_08_Alloulou_walmrjan.mp3",
+      "https://d1.islamhouse.com/data/ar/ih_sounds/chain_01/Alloulou_walmrjan/ar_09_Alloulou_walmrjan.mp3",
+      "https://d1.islamhouse.com/data/ar/ih_sounds/chain_01/Alloulou_walmrjan/ar_10_Alloulou_walmrjan.mp3",
+      "https://d1.islamhouse.com/data/ar/ih_sounds/chain_01/Alloulou_walmrjan/ar_11_Alloulou_walmrjan.mp3",
+      "https://d1.islamhouse.com/data/ar/ih_sounds/chain_01/Alloulou_walmrjan/ar_12_Alloulou_walmrjan.mp3",
+      "https://d1.islamhouse.com/data/ar/ih_sounds/chain_01/Alloulou_walmrjan/ar_13_Alloulou_walmrjan.mp3",
+      "https://d1.islamhouse.com/data/ar/ih_sounds/chain_01/Alloulou_walmrjan/ar_14_Alloulou_walmrjan.mp3",
+      "https://d1.islamhouse.com/data/ar/ih_sounds/chain_01/Alloulou_walmrjan/ar_15_Alloulou_walmrjan.mp3",
+      "https://d1.islamhouse.com/data/ar/ih_sounds/chain_01/Alloulou_walmrjan/ar_16_Alloulou_walmrjan.mp3",
+      "https://d1.islamhouse.com/data/ar/ih_sounds/chain_01/Alloulou_walmrjan/ar_17_Alloulou_walmrjan.mp3",
+      "https://d1.islamhouse.com/data/ar/ih_sounds/chain_01/Alloulou_walmrjan/ar_18_Alloulou_walmrjan.mp3",
+      "https://d1.islamhouse.com/data/ar/ih_sounds/chain_01/Alloulou_walmrjan/ar_19_Alloulou_walmrjan.mp3",
+      "https://d1.islamhouse.com/data/ar/ih_sounds/chain_01/Alloulou_walmrjan/ar_20_Alloulou_walmrjan.mp3",
+      "https://d1.islamhouse.com/data/ar/ih_sounds/chain_01/Alloulou_walmrjan/ar_21_Alloulou_walmrjan.mp3",
+      "https://d1.islamhouse.com/data/ar/ih_sounds/chain_01/Alloulou_walmrjan/ar_22_Alloulou_walmrjan.mp3",
+      "https://d1.islamhouse.com/data/ar/ih_sounds/chain_01/Alloulou_walmrjan/ar_23_Alloulou_walmrjan.mp3",
+      "https://d1.islamhouse.com/data/ar/ih_sounds/chain_01/Alloulou_walmrjan/ar_24_Alloulou_walmrjan.mp3",
+      "https://d1.islamhouse.com/data/ar/ih_sounds/chain_01/Alloulou_walmrjan/ar_25_Alloulou_walmrjan.mp3",
+      "https://d1.islamhouse.com/data/ar/ih_sounds/chain_01/Alloulou_walmrjan/ar_26_Alloulou_walmrjan.mp3",
+      "https://d1.islamhouse.com/data/ar/ih_sounds/chain_01/Alloulou_walmrjan/ar_27_Alloulou_walmrjan.mp3",
+      "https://d1.islamhouse.com/data/ar/ih_sounds/chain_01/Alloulou_walmrjan/ar_28_Alloulou_walmrjan.mp3",
+      "https://d1.islamhouse.com/data/ar/ih_sounds/chain_01/Alloulou_walmrjan/ar_29_Alloulou_walmrjan.mp3",
+      "https://d1.islamhouse.com/data/ar/ih_sounds/chain_01/Alloulou_walmrjan/ar_30_Alloulou_walmrjan.mp3",
+      "https://d1.islamhouse.com/data/ar/ih_sounds/chain_01/Alloulou_walmrjan/ar_31_Alloulou_walmrjan.mp3",
+      "https://d1.islamhouse.com/data/ar/ih_sounds/chain_01/Alloulou_walmrjan/ar_32_Alloulou_walmrjan.mp3",
+      "https://d1.islamhouse.com/data/ar/ih_sounds/chain_01/Alloulou_walmrjan/ar_33_Alloulou_walmrjan.mp3",
+      "https://d1.islamhouse.com/data/ar/ih_sounds/chain_01/Alloulou_walmrjan/ar_34_Alloulou_walmrjan.mp3",
+      "https://d1.islamhouse.com/data/ar/ih_sounds/chain_01/Alloulou_walmrjan/ar_35_Alloulou_walmrjan.mp3",
+      "https://d1.islamhouse.com/data/ar/ih_sounds/chain_01/Alloulou_walmrjan/ar_36_Alloulou_walmrjan.mp3",
+      "https://d1.islamhouse.com/data/ar/ih_sounds/chain_01/Alloulou_walmrjan/ar_37_Alloulou_walmrjan.mp3",
+      "https://d1.islamhouse.com/data/ar/ih_sounds/chain_01/Alloulou_walmrjan/ar_38_Alloulou_walmrjan.mp3",
+      "https://d1.islamhouse.com/data/ar/ih_sounds/chain_01/Alloulou_walmrjan/ar_39_Alloulou_walmrjan.mp3",
+    ],
+
+    category: "الحديث و علومه",
+  },
+
+  {
+    title: "فتاوي كبار العلماء",
+    url: ["https://radio.alukah.net/hadith"],
+    category: "الفقه و علومه",
+  },
+
+  {
     title: "ألفية العراقي في الحديث",
     url: [
       "https://files.a-alqasim.com/audio/Mutoon/YusufAlAynaaty/0805AlfiyyahAlIraaqi_YusufAlAynaaty.mp3",
@@ -216,6 +274,17 @@ const files = [
     ],
     category: "اللغة",
   },
+  {
+    title: "المختصر في التفسير",
+    url: [" https://qurango.net/radio/mukhtasartafsir"],
+    category: "علوم القرآن و التفسير",
+  },
+  {
+    title: "تفسير ابن عثيمين",
+    url: ["https://qurango.net/radio/tafseer"],
+    category: "علوم القرآن و التفسير",
+  },
+
   {
     title: "نونية القحطاني",
     url: [

@@ -102,7 +102,7 @@ h1 {
 }
 
 .section-audio {
-  margin: 1rem 0;
+  margin-top: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -115,6 +115,17 @@ h1 {
   width: 90%;
   max-width: 40rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+audio.live-audio {
+  display: none; /* hide entire native player */
+}
+
+.section-audio.live::after {
+  content: "🔴 بث مباشر";
+  color: #008baf;
+  font-weight: bold;
+  font-size: 2rem;
 }
 
 /* --- Cards Section --- */

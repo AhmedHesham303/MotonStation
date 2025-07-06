@@ -47,6 +47,8 @@ function normalize(text) {
 
 // ==== Playback Logic ====
 function playFromTime(file, button) {
+  const wrapper = document.getElementById("audio-wrapper");
+
   if (currentPlayButton && currentPlayButton !== button) {
     currentPlayButton.textContent = "▶";
   }
@@ -57,21 +59,34 @@ function playFromTime(file, button) {
   const now = new Date();
   const secondsToday =
     now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds();
-
   const index = secondsToday % file.url.length;
-  const selectedUrl = file.url[index];
+  const selectedUrl = file.url[index].trim();
+  const isLive = !selectedUrl.endsWith(".mp3");
 
   audio.src = selectedUrl;
 
-  audio.addEventListener(
-    "loadedmetadata",
-    () => {
-      const seekTime = secondsToday % audio.duration;
-      audio.currentTime = seekTime;
-      audio.play();
-    },
-    { once: true }
-  );
+  if (isLive) {
+    // Live stream: hide player and show live label
+    wrapper.classList.add("live");
+    audio.controls = false;
+    audio.classList.add("live-audio");
+    audio.play();
+  } else {
+    // Normal .mp3 playback
+    wrapper.classList.remove("live");
+    audio.classList.remove("live-audio");
+    audio.controls = true;
+
+    audio.addEventListener(
+      "loadedmetadata",
+      () => {
+        const seekTime = secondsToday % audio.duration;
+        audio.currentTime = seekTime;
+        audio.play();
+      },
+      { once: true }
+    );
+  }
 }
 
 function stopAudio(button) {
