@@ -17,11 +17,22 @@
     "32": "assets/icons8-mosque-color-32.png",
     "48": "assets/icons8-mosque-color-96.png"
   },
-  "permissions": ["storage"],
+  "permissions": ["storage", "offscreen"],
   "host_permissions": [
     "https://files.a-alqasim.com/*",
     "https://media.islamway.net/*"
   ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "offscreen_documents": [
+    {
+      "url": "offscreen.html",
+      "reasons": ["AUDIO_PLAYBACK"],
+      "justification": "To allow continuous audio playback even when the popup window is closed."
+    }
+  ],
+
   "content_security_policy": {
     "extension_pages": "script-src 'self'; object-src 'self';"
   }
