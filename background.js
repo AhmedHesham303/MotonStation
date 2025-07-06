@@ -8,7 +8,7 @@ const searchInput = document.querySelector(".search");
 // ==== State ====
 let currentPlayButton = null;
 const curFiles = [...files];
-const selectedCategory = "الكل";
+let selectedCategory = "الكل";
 
 // ==== Utility Functions ====
 function eraseElementClass(elements, className) {
@@ -96,14 +96,18 @@ function displayByCategory(selectedCategory) {
 
 function searchFiles(query) {
   const normalizedQuery = normalize(query);
-  return files.filter((file) =>
-    normalize(file.title).includes(normalizedQuery)
+  return files.filter(
+    (file) => normalize(file.title).includes(normalizedQuery)
+    // &&
+    // file.category == selectedCategory
   );
 }
 
 // ==== Event Binding ====
 function handleCategoryClick() {
   categoryBtn.forEach((btn) => {
+    selectedCategory = btn.textContent;
+
     btn.addEventListener("click", () => {
       displayByCategory(btn.textContent);
       eraseElementClass(categoryBtn, "active");
