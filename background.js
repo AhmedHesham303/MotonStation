@@ -64,7 +64,7 @@ function playFromTime(file, button) {
   const isLive = !selectedUrl.endsWith(".mp3");
 
   audio.src = selectedUrl;
-
+  document.querySelector(".playing-audio").textContent = file.title;
   if (isLive) {
     document.querySelector(".section-audio").style.display = "none";
     document.querySelector(".live-audio").style.display = "block";
