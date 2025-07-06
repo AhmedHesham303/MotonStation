@@ -93,22 +93,21 @@ function createCard(file) {
   fav.className = "fav";
   fav.textContent = "♥";
 
-  // 👉 Restore saved favorite color
-  const savedColor = localStorage.getItem(file.title);
-  if (savedColor) {
+  // Load favorite state from localStorage
+  if (localStorage.getItem(file.title)) {
     fav.classList.add("active");
-    fav.style.color = savedColor;
   }
 
-  // 👉 When clicking the heart icon
   fav.addEventListener("click", () => {
-    fav.classList.toggle("active");
     if (fav.classList.contains("active")) {
-      localStorage.setItem(file.title, "#ff9800");
-      fav.style.color = "#ff9800";
-    } else {
+      fav.classList.remove("active");
       localStorage.removeItem(file.title);
-      fav.style.color = "white"; // or original default
+      if (selectedCategory === "المفضلة") {
+        card.remove();
+      }
+    } else {
+      fav.classList.add("active");
+      localStorage.setItem(file.title, "#ff9800");
     }
   });
 
