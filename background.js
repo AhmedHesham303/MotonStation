@@ -3,6 +3,7 @@ const audio = document.getElementById("player");
 const cardsContainer = document.querySelector(".cards");
 const randomButton = document.getElementById("random-play");
 const categoryBtn = document.querySelectorAll(".categories button");
+const searchInput = document.querySelector(".search");
 
 // ==== State ====
 let currentPlayButton = null;
@@ -16,6 +17,15 @@ function eraseElementClass(elements, className) {
 
 function addElementClass(element, className) {
   element.classList.add(className);
+}
+
+function normalize(text) {
+  return text
+    .toLowerCase()
+    .replace(/[\u064B-\u065F]/g, "") // Remove tashkeel
+    .replace(/ة/g, "ه") // Normalize taa marbouta
+    .replace(/أ|إ|آ/g, "ا") // Normalize different forms of alif
+    .trim();
 }
 
 // ==== Playback Logic ====
@@ -66,6 +76,7 @@ function createCard(file) {
 
   right.appendChild(playBtn);
   right.appendChild(title);
+
   card.appendChild(right);
   card.appendChild(fav);
 
@@ -83,6 +94,13 @@ function displayByCategory(selectedCategory) {
   filteredFiles.forEach((file) => createCard(file));
 }
 
+function searchFiles(query) {
+  const normalizedQuery = normalize(query);
+  return files.filter((file) =>
+    normalize(file.title).includes(normalizedQuery)
+  );
+}
+
 // ==== Event Binding ====
 function handleCategoryClick() {
   categoryBtn.forEach((btn) => {
@@ -94,10 +112,34 @@ function handleCategoryClick() {
   });
 }
 
+searchInput.addEventListener("input", () => {
+  const results = searchFiles(searchInput.value);
+  cardsContainer.innerHTML = "";
+  results.forEach((file) => createCard(file));
+});
+
 randomButton.addEventListener("click", () => {
   const randomIndex = Math.floor(Math.random() * files.length);
   playFromTime(files[randomIndex]);
 });
+
+// ==== Background Utility ====
+async function ensureOffscreen() {
+  const exists = await chrome.offscreen.hasDocument();
+  if (!exists) {
+    await chrome.offscreen.createDocument({
+      url: "offscreen.html",
+      reasons: [chrome.offscreen.Reason.AUDIO_PLAYBACK],
+      justification:
+        "To allow continuous audio playback even when the popup window is closed.",
+    });
+  }
+}
+
+async function playInBackground(url) {
+  await ensureOffscreen();
+  chrome.runtime.sendMessage({ type: "play-audio", url });
+}
 
 // ==== Init ====
 curFiles.forEach((file) => createCard(file));
