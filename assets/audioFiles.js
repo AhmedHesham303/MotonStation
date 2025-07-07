@@ -4,7 +4,7 @@ const files = [
     url: [
       "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0101AlAthkaar_AbdulAzizAsSini.mp3",
     ],
-    category: "الحديث و علومه",
+    category: "الحديث و علومه أهم الصوتيات",
   },
   {
     title: "نواقض الإسلام",
@@ -32,7 +32,7 @@ const files = [
     url: [
       "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0204AlArbaunAnNawawiyah_AbdulAzizAsSini.mp3",
     ],
-    category: "الحديث و علومه",
+    category: "الحديث و علومه أهم الصوتيات",
   },
   {
     title: "تحفة الأطفال",
@@ -49,7 +49,7 @@ const files = [
     category: "الفقه و علومه",
   },
   {
-    title: "كتاب التوحيد",
+    title: "كتاب التوحيد أهم الصوتيات",
     url: [
       "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0303KitaabAtTawheed_AbdulAzizAsSini.mp3",
     ],
@@ -120,11 +120,11 @@ const files = [
     category: "العقيدة",
   },
   {
-    title: "بلوغ المرام",
+    title: "بلوغ المرام من أدلة الأحكام",
     url: [
       "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0601Buloogh_AbdulAzizAsSini.mp3",
     ],
-    category: "الحديث و علومه",
+    category: "الحديث و علومه أهم الصوتيات",
   },
   {
     title: "زاد المستقنع في اختصار المقنع",
@@ -152,12 +152,12 @@ const files = [
     url: [
       "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0802AlUmdatuFilAhkaam_AbdulAzizAsSini.mp3",
     ],
-    category: "الحديث و علومه",
+    category: "الحديث و علومه أهم الصوتيات",
   },
   {
     title: "إذاعة السنة النبوية",
     url: ["https://radio.alukah.net/hadith"],
-    category: "الحديث و علومه",
+    category: "الحديث و علومه أهم الصوتيات",
   },
   // {
   //   title: "اللؤلؤ و المرجان في ما اتفق عليه الشيخان",
@@ -406,12 +406,12 @@ const files = [
   {
     title: "المختصر في التفسير",
     url: [" https://qurango.net/radio/mukhtasartafsir"],
-    category: "علوم القرآن و التفسير",
+    category: "علوم القرآن و التفسير أهم الصوتيات",
   },
   {
     title: "تفسير ابن عثيمين",
     url: ["https://qurango.net/radio/tafseer"],
-    category: "علوم القرآن و التفسير",
+    category: "علوم القرآن و التفسير أهم الصوتيات",
   },
 
   {
@@ -426,7 +426,7 @@ const files = [
     url: [
       "https://media.islamway.net/audiobooks/15-HDrihim_HossnMoslim256.mp3",
     ],
-    category: "الحديث و علومه",
+    category: "الحديث و علومه أهم الصوتيات",
   },
   {
     title: "قصيدة أبي البقاء الرندي في رثاء الأندلس",

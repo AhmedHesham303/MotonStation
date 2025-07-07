@@ -7,8 +7,11 @@ const searchInput = document.querySelector(".search");
 const about = document.querySelector(".about");
 // ==== State ====
 let currentPlayButton = null;
-const curFiles = [...files];
-let selectedCategory = "الكل";
+let selectedCategory = "أهم الصوتيات";
+
+const curFiles = files.filter((file) =>
+  file.category.includes(selectedCategory)
+);
 
 // ==== Utility Functions ====
 
@@ -206,5 +209,6 @@ randomButton.addEventListener("click", () => {
 // ==== Background Utility ====
 
 // ==== Init ====
+
 curFiles.forEach((file) => createCard(file));
 handleCategoryClick();
