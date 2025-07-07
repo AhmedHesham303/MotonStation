@@ -473,7 +473,7 @@ const files = [
   {
     title: "وصايا السلف للشباب",
     url: ["https://media.islamway.net/lessons/736/506_Al3bad_Wasaea.mp3"],
-    category: "محاضرات مختارة",
+    category: "محاضرات مختارة الأدب و الرقائق",
   },
 
   {

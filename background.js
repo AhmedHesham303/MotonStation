@@ -153,7 +153,7 @@ function displayByCategory(selectedCategory) {
       ? getFilesFromLocalStorage()
       : selectedCategory === "الكل"
       ? files
-      : files.filter((file) => file.category === selectedCategory);
+      : files.filter((file) => file.category.includes(selectedCategory));
 
   cardsContainer.innerHTML = "";
   filteredFiles.forEach(createCard);

@@ -78,6 +78,10 @@ h1 {
   padding: 1rem;
 }
 
+.important {
+  display: block;
+}
+
 .categories button {
   background-color: #e0f3f8;
   border: none;
