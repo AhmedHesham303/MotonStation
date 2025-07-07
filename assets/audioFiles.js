@@ -464,6 +464,12 @@ const files = [
   },
 
   {
+    title: "وصايا السلف للشباب",
+    url: ["https://media.islamway.net/lessons/736/506_Al3bad_Wasaea.mp3"],
+    category: "محاضرات مختارة",
+  },
+
+  {
     title: "ذوق الصلاة لابن القيم",
     url: ["https://media.islamway.net/audiobooks/4651/15_RHlibh_ThouqSlat.mp3"],
     category: "كتب صوتية",
