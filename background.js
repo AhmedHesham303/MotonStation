@@ -46,15 +46,6 @@ function normalize(text) {
     .trim();
 }
 
-// function getFileDuration(urls) {
-//   let duration = 0;
-//   urls.forEach((url) => {
-//     let audio = new Audio(url);
-//     duration += audio.duration;
-//   });
-//   return duration;
-// }
-
 // ==== Playback Logic ====
 function playFromTime(file, button) {
   if (currentPlayButton && currentPlayButton !== button) {
@@ -213,22 +204,6 @@ randomButton.addEventListener("click", () => {
 });
 
 // ==== Background Utility ====
-async function ensureOffscreen() {
-  const exists = await chrome.offscreen.hasDocument();
-  if (!exists) {
-    await chrome.offscreen.createDocument({
-      url: "offscreen.html",
-      reasons: [chrome.offscreen.Reason.AUDIO_PLAYBACK],
-      justification:
-        "To allow continuous audio playback even when the popup window is closed.",
-    });
-  }
-}
-
-async function playInBackground(url) {
-  await ensureOffscreen();
-  chrome.runtime.sendMessage({ type: "play-audio", url });
-}
 
 // ==== Init ====
 curFiles.forEach((file) => createCard(file));
