@@ -4,6 +4,7 @@ const cardsContainer = document.querySelector(".cards");
 const randomButton = document.getElementById("random-play");
 const categoryBtn = document.querySelectorAll(".categories button");
 const searchInput = document.querySelector(".search");
+const about = document.querySelector(".about");
 // ==== State ====
 let currentPlayButton = null;
 const curFiles = [...files];
@@ -178,6 +179,10 @@ function handleCategoryClick() {
     });
   });
 }
+
+about.addEventListener("click", () => {
+  window.location = "./about.html";
+});
 
 searchInput.addEventListener("input", () => {
   const results = searchFiles(searchInput.value);

@@ -20,6 +20,7 @@ body {
 }
 
 .container {
+  position: relative;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -49,7 +50,24 @@ header {
 
 h1 {
   font-size: 3rem;
-  margin-top: 1rem;
+  margin-top: 3rem;
+}
+
+.about {
+  position: absolute;
+  left: 0;
+  color: black;
+  font-size: 1.4rem;
+  padding: 1rem 0.75rem;
+  background-color: #e0f3f8;
+  font-weight: bold;
+  z-index: 10;
+}
+
+.about:hover {
+  cursor: pointer;
+  background-color: #ff9800;
+  color: white;
 }
 
 .language-switch {
