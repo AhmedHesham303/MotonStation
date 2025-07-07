@@ -29,7 +29,8 @@ header {
 
 h1 {
   font-size: 3rem;
-  margin-top: 3rem;
+  margin-bottom: 1rem;
+  margin-top: 0;
 }
 
 .about {
@@ -58,7 +59,8 @@ h1 {
 }
 
 .search-container {
-  margin: 1rem auto;
+  margin: 0rem auto;
+  margin-bottom: 3rem;
   text-align: center;
 }
 
@@ -69,17 +71,17 @@ h1 {
   width: 80%;
 }
 
-.categories {
+.categories-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+
   gap: 0.5rem;
   row-gap: 1rem;
   padding: 1rem;
 }
 
-.categories button,
-.important {
+.categories button {
   background-color: #e0f3f8;
   border: none;
   border-radius: 2rem;
@@ -89,13 +91,20 @@ h1 {
 }
 
 .important {
+  width: 60%;
+  display: block;
   text-align: center;
   padding: 0.2rem 6rem;
   font-size: 1.4rem;
+  text-align: center;
+  margin: 0 auto;
 }
 
-.categories button:hover,
-.important:hover {
+#first-category {
+  margin-bottom: 1rem;
+}
+
+.categories button:hover {
   cursor: pointer;
   background-color: #ff9800;
   color: white;
