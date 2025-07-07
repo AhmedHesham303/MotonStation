@@ -49,7 +49,7 @@ const files = [
     category: "الفقه و علومه",
   },
   {
-    title: "كتاب التوحيد أهم الصوتيات",
+    title: "كتاب التوحيد",
     url: [
       "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0303KitaabAtTawheed_AbdulAzizAsSini.mp3",
     ],
