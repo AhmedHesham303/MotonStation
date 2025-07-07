@@ -46,10 +46,17 @@ function normalize(text) {
     .trim();
 }
 
+// function getFileDuration(urls) {
+//   let duration = 0;
+//   urls.forEach((url) => {
+//     let audio = new Audio(url);
+//     duration += audio.duration;
+//   });
+//   return duration;
+// }
+
 // ==== Playback Logic ====
 function playFromTime(file, button) {
-  const wrapper = document.getElementById("audio-wrapper");
-
   if (currentPlayButton && currentPlayButton !== button) {
     currentPlayButton.textContent = "▶";
   }
@@ -60,7 +67,7 @@ function playFromTime(file, button) {
   const now = new Date();
   const secondsToday =
     now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds();
-  const index = secondsToday % file.url.length;
+  const index = 0;
   const selectedUrl = file.url[index].trim();
   const isLive = !selectedUrl.endsWith(".mp3");
 

@@ -200,7 +200,6 @@ const files = [
   {
     title: "تفسير ابن جزي",
     url: [
-      "https://mirrors.quranicaudio.com/tafsir.one/ibn-juzay/000.mp3",
       "https://mirrors.quranicaudio.com/tafsir.one/ibn-juzay/001.mp3",
       "https://mirrors.quranicaudio.com/tafsir.one/ibn-juzay/002.mp3",
       "https://mirrors.quranicaudio.com/tafsir.one/ibn-juzay/003.mp3",
