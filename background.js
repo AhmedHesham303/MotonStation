@@ -5,8 +5,11 @@ const randomButton = document.getElementById("random-play");
 const categoryBtn = document.querySelectorAll(".categories button");
 const searchInput = document.querySelector(".search");
 const about = document.querySelector(".about");
+const playLive = document.querySelector(".play-live");
+
 // ==== State ====
 let currentPlayButton = null;
+let currentLiveFile = null;
 let selectedCategory = "أهم الصوتيات";
 
 const curFiles = files.filter((file) =>
@@ -17,18 +20,11 @@ const curFiles = files.filter((file) =>
 
 function getFilesFromLocalStorage() {
   const matchedFiles = [];
-
   for (let i = 0; i < localStorage.length; i++) {
     const key = localStorage.key(i);
-
-    // Try to find a file with a matching title
     const file = files.find((f) => f.title === key);
-
-    if (file) {
-      matchedFiles.push(file);
-    }
+    if (file) matchedFiles.push(file);
   }
-
   return matchedFiles;
 }
 
@@ -67,12 +63,15 @@ function playFromTime(file, button) {
 
   audio.src = selectedUrl;
   document.querySelector(".playing-audio").textContent = file.title;
+
   if (isLive) {
+    currentLiveFile = file; // Save live file
     document.querySelector(".section-audio").style.display = "none";
-    document.querySelector(".live-audio").style.display = "block";
+    document.querySelector(".live-audio").style.display = "flex";
     audio.controls = false;
     audio.play();
   } else {
+    currentLiveFile = null;
     document.querySelector(".section-audio").style.display = "block";
     document.querySelector(".live-audio").style.display = "none";
     audio.controls = true;
@@ -95,6 +94,18 @@ function stopAudio(button) {
   if (button) button.textContent = "▶";
 }
 
+// ==== Live Button Logic ====
+playLive.onclick = () => {
+  if (playLive.textContent === "❚❚") {
+    stopAudio(playLive);
+    currentPlayButton = null;
+  } else if (currentLiveFile) {
+    playFromTime(currentLiveFile, playLive);
+  } else {
+    alert("اختر بثًا مباشرًا أولاً.");
+  }
+};
+
 // ==== Card UI ====
 function createCard(file) {
   const card = document.createElement("div");
@@ -107,7 +118,6 @@ function createCard(file) {
   fav.className = "fav";
   fav.textContent = "♥";
 
-  // Load favorite state from localStorage
   if (localStorage.getItem(file.title)) {
     fav.classList.add("active");
   }
@@ -192,23 +202,18 @@ searchInput.addEventListener("input", () => {
 });
 
 randomButton.addEventListener("click", () => {
-  const randomIndex = Math.floor(Math.random() * files.length); // Pick random file
+  const randomIndex = Math.floor(Math.random() * files.length);
   const randomFile = files[randomIndex];
-  console.log(randomFile);
 
-  cardsContainer.innerHTML = ""; // Clear all cards
+  cardsContainer.innerHTML = "";
+  createCard(randomFile);
 
-  createCard(randomFile); // Create and append the card to container
+  const lastCard = cardsContainer.querySelector(".card:last-child");
+  const playBtn = lastCard.querySelector(".card-right .play");
 
-  const lastCard = cardsContainer.querySelector(".card:last-child"); // Get the new card
-  const playBtn = lastCard.querySelector(".card-right .play"); // Get the button inside that card
-
-  playFromTime(randomFile, playBtn); // Play the audio
+  playFromTime(randomFile, playBtn);
 });
 
-// ==== Background Utility ====
-
 // ==== Init ====
-
 curFiles.forEach((file) => createCard(file));
 handleCategoryClick();
