@@ -42,12 +42,6 @@ body {
   margin-bottom: 1rem;
 }
 
-.card h2 {
-  font-size: 2.2rem;
-  color: #1f2937;
-  margin: 0.5rem 0;
-}
-
 .card p {
   line-height: 1.6;
   font-size: 1.6rem;
@@ -57,6 +51,10 @@ body {
   margin-top: 2rem;
 }
 
+.contact-type {
+  font-size: 1.4rem;
+}
+
 .contact h3 {
   font-size: 2rem;
   margin-bottom: 1rem;
@@ -64,7 +62,7 @@ body {
 
 .contact-info {
   display: flex;
-  gap: 1rem;
+  gap: 0.4rem;
   justify-content: center;
 }
 
@@ -133,11 +131,17 @@ body {
 
 .project-card h3 {
   margin: 0.5rem 0;
-  font-size: 2rem;
+  font-size: 2.2rem;
 }
 
-.project-card p {
-  font-size: 1rem;
+ul {
+  padding: 0;
+}
+
+li {
+  font-size: 1.2rem;
+  text-align: center;
+  list-style: none;
 }
 
 .project-card a {
