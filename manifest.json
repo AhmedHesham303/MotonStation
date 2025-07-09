@@ -21,7 +21,8 @@
   "host_permissions": [
     "https://files.a-alqasim.com/*",
     "https://media.islamway.net/*",
-    "https://www.mimham.net"
+    "https://www.mimham.net",
+    "https://radio.alukah.ne"
   ],
   "background": {
     "service_worker": "background.js"
