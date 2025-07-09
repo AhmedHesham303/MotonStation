@@ -20,7 +20,8 @@
   "permissions": ["storage", "offscreen"],
   "host_permissions": [
     "https://files.a-alqasim.com/*",
-    "https://media.islamway.net/*"
+    "https://media.islamway.net/*",
+    "https://www.mimham.net"
   ],
   "background": {
     "service_worker": "background.js"

@@ -59,7 +59,8 @@ function playFromTime(file, button) {
     now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds();
   const index = 0;
   const selectedUrl = file.url[index].trim();
-  const isLive = !selectedUrl.endsWith(".mp3");
+  const isLive =
+    !selectedUrl.endsWith(".mp3") && !selectedUrl.includes("audmat");
 
   audio.src = selectedUrl;
   document.querySelector(".playing-audio").textContent = file.title;

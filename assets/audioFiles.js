@@ -49,6 +49,12 @@ const files = [
     category: "الفقه و علومه",
   },
   {
+    title: "الفرائد البهية في القواعد الفقهية",
+    url: ["https://www.mimham.net/audmat-380"],
+    category: "الفقه و علومه",
+  },
+
+  {
     title: "كتاب التوحيد",
     url: [
       "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0303KitaabAtTawheed_AbdulAzizAsSini.mp3",
@@ -63,12 +69,42 @@ const files = [
     category: "الحديث و مصطلحه",
   },
   {
+    title: "أحادييث مختارة من الؤلؤ و المرجان",
+    url: ["https://media.islamway.net/lessons/Motoon/A7adeeth.mp3"],
+    category: "الحديث و مصطلحه",
+  },
+
+  {
+    title: "الخلاصة الحسناء في أذكار الصباح و المساء",
+    url: ["https://www.mimham.net/audmat-1060"],
+    category: "الحديث و مصطلحه",
+  },
+  {
+    title: "غرامي صحيح",
+    url: [" https://www.mimham.net/audmat-396"],
+    category: "الحديث و مصطلحه",
+  },
+
+  {
     title: "قصيدة أبي إسحاق الإلبيري",
     url: [
       "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0402AlIlbiri_AbdulAzizAsSini.mp3",
     ],
     category: "الأدب و الرقائق",
   },
+
+  {
+    title: "لامية ابن الوردي",
+    url: ["  https://www.mimham.net/audmat-624"],
+    category: "الأدب و الرقائق",
+  },
+
+  {
+    title: "خلاصة تعظيم العلم",
+    url: ["https://www.mimham.net/audmat-768"],
+    category: "الأدب و الرقائق",
+  },
+
   {
     title: "المقدمة الآجرومية",
     url: [
@@ -76,6 +112,18 @@ const files = [
     ],
     category: "اللغة",
   },
+  {
+    title: "ملحة الإعراب",
+    url: ["https://www.mimham.net/audmat-369"],
+    category: "اللغة",
+  },
+
+  {
+    title: "نظم مثلث قطري",
+    url: ["  https://www.mimham.net/audmat-614"],
+    category: "اللغة",
+  },
+
   {
     title: "العقيدة الواسطية",
     url: [
@@ -98,12 +146,41 @@ const files = [
     category: "الأدب و الرقائق",
   },
   {
+    title: "نونية ابن القيم في وصف الجنة",
+    url: [
+      "https://media.islamway.net/lessons/scho864/347_Fares_Abbad_NoniatEbnelQaim_32.mp3",
+    ],
+    category: "الأدب و الرقائق",
+  },
+  {
+    title: "بهجة الطلب في آداب الطلب",
+    url: ["https://www.mimham.net/audmat-1058"],
+    category: "الأدب و الرقائق",
+  },
+  {
+    title: "الآداب العشرة",
+    url: ["https://www.mimham.net/audmat-1059"],
+    category: "الأدب و الرقائق",
+  },
+
+  {
     title: "الرحبية",
     url: [
       "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0503ArRahbiyah_AbdulAzizAsSini.mp3",
     ],
     category: "الفقه و علومه",
   },
+  {
+    title: "منظومة القواعد الفقهية للسعدي",
+    url: [" https://www.mimham.net/audmat-846"],
+    category: "الفقه و علومه",
+  },
+  {
+    title: "المقدمة الفقهية الصغري للعصيمي",
+    url: [" https://www.mimham.net/audmat-859"],
+    category: "الفقه و علومه",
+  },
+
   {
     title: "النظم الجلي في الفقه الحنبلي",
     url: [
@@ -332,6 +409,11 @@ const files = [
     url: ["https://radio.alukah.net/hadith"],
     category: "الفقه و علومه",
   },
+  {
+    title: "منح الفعال نظم الورقات",
+    url: ["https://www.mimham.net/audmat-1056"],
+    category: "الفقه و علومه",
+  },
 
   {
     title: "ألفية العراقي في الحديث",
@@ -340,6 +422,15 @@ const files = [
     ],
     category: "الحديث و علومه",
   },
+
+  {
+    title: "أذكار طرفي الليل و النهار",
+    url: [
+      "https://media.islamway.net/lessons/scho864/014-AtkarTrfyAlnahar.mp3",
+    ],
+    category: "الحديث و علومه",
+  },
+
   {
     title: "الشاطبية",
     url: [
@@ -354,6 +445,13 @@ const files = [
     ],
     category: "العقيدة",
   },
+
+  {
+    title: "فضل الإسلام",
+    url: ["https://www.mimham.net/audmat-879"],
+    category: "العقيدة",
+  },
+
   {
     title: "ألفية العراقي في السيرة",
     url: [
@@ -368,6 +466,14 @@ const files = [
     ],
     category: "التجويد و القراءات",
   },
+  {
+    title: "السلسبيل الشافي",
+    url: [
+      "https://media.islamway.net/lessons/scho977/440_Matn_Alsalsabel_Alshafy.mp3",
+    ],
+    category: "التجويد و القراءات",
+  },
+
   {
     title: "كشف الشبهات",
     url: [
@@ -396,6 +502,13 @@ const files = [
     ],
     category: "علوم القرآن و التفسير",
   },
+
+  {
+    title: "معاني الفاتحة و قصار المفصل للعصيمي",
+    url: ["  https://www.mimham.net/audmat-845"],
+    category: "علوم القرآن و التفسير",
+  },
+
   {
     title: "مائة المعاني و البيان",
     url: [
@@ -403,6 +516,12 @@ const files = [
     ],
     category: "اللغة",
   },
+  {
+    title: "منظومة الزمزمي",
+    url: ["https://www.mimham.net/audmat-1071"],
+    category: "علوم القرآن و التفسير",
+  },
+
   {
     title: "المختصر في التفسير",
     url: [" https://qurango.net/radio/mukhtasartafsir"],
@@ -421,6 +540,13 @@ const files = [
     ],
     category: "العقيدة",
   },
+
+  {
+    title: "سلم الوصول",
+    url: ["  https://www.mimham.net/audmat-408"],
+    category: "العقيدة",
+  },
+
   {
     title: "حصن المسلم",
     url: [
@@ -433,6 +559,11 @@ const files = [
     url: ["https://media.islamway.net/several/Andalous.mp3"],
     category: "قصائد و أناشيد مختارة",
   },
+  {
+    title: "لامية العرب",
+    url: ["https://www.mimham.net/audmat-631"],
+    category: "قصائد و أناشيد مختارة",
+  },
 
   {
     title: "أيا من يدعي الفهم",
@@ -443,6 +574,17 @@ const files = [
   {
     title: "ذوق الصلاة لابن القيم",
     url: ["https://media.islamway.net/audiobooks/4651/15_RHlibh_ThouqSlat.mp3"],
+    category: "كتب صوتية",
+  },
+  {
+    title: "ذم قسوة القلب لابن رجب",
+    url: ["https://www.mimham.net/audmat-380"],
+    category: "كتب صوتية",
+  },
+
+  {
+    title: "بيان فضل علم السلف علي الخلف",
+    url: ["https://www.mimham.net/audmat-463"],
     category: "كتب صوتية",
   },
 
