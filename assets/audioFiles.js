@@ -119,7 +119,7 @@ const files = [
   },
 
   {
-    title: "نظم مثلث قطري",
+    title: "نظم مثلث قطرب",
     url: ["  https://www.mimham.net/audmat-614"],
     category: "اللغة",
   },
