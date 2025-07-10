@@ -45,6 +45,21 @@ function normalize(text) {
     .trim();
 }
 
+function handelBigFiles(file, secondsToday) {
+  let index = 0;
+  for (let i = 0; i < file.duration.length; i++) {
+    const duration = file.duration[i];
+    if (secondsToday > duration) {
+      secondsToday -= duration;
+      index += 1;
+    } else {
+      return [index, secondsToday];
+    }
+  }
+  // If we exceed all durations, use last index
+  return [file.duration.length - 1, secondsToday];
+}
+
 // ==== Playback Logic ====
 function playFromTime(file, button) {
   if (currentPlayButton && currentPlayButton !== button) {
@@ -55,10 +70,14 @@ function playFromTime(file, button) {
   button.textContent = "❚❚";
 
   const now = new Date();
-  const secondsToday =
+  let secondsToday =
     now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds();
-  console.log(secondsToday);
-  const index = 0;
+  let index = 0;
+  if (file.size === "big") {
+    [index, secondsToday] = handelBigFiles(file, secondsToday);
+    console.log(index);
+  }
+
   const selectedUrl = file.url[index].trim();
   const isLive =
     !selectedUrl.endsWith(".mp3") && !selectedUrl.includes("audmat");

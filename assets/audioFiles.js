@@ -83,6 +83,8 @@ const files = [
       "https://dn721609.ca.archive.org/0/items/Mokhtasar_fi_Sirra/04.mp3",
     ],
     category: "السيرة أهم الصوتيات",
+    size: "big",
+    duration: [14075, 16600, 20851, 21305],
   },
 
   {
