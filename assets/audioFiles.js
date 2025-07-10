@@ -113,6 +113,14 @@ const files = [
     category: "اللغة",
   },
   {
+    title: "منظومة أحسن الأخلاق",
+    url: [
+      "https://ia600905.us.archive.org/18/items/Media-way2Allah_1521/mnzwma_ahsn_alakhlak_nzm-_3amr_bhgt_-_elkaa-_3le_al3amre_med.mp3",
+    ],
+    category: "الأدب و الرقائق قسم الأطفال",
+  },
+
+  {
     title: "ملحة الإعراب",
     url: ["https://www.mimham.net/audmat-369"],
     category: "اللغة",
