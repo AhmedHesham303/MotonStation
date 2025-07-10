@@ -32,7 +32,7 @@ const files = [
     url: [
       "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0204AlArbaunAnNawawiyah_AbdulAzizAsSini.mp3",
     ],
-    category: "الحديث و علومه أهم الصوتيات",
+    category: "قسم الأطفال أهم الصوتيات الحديث و علومه",
   },
   {
     title: "تحفة الأطفال",
@@ -49,17 +49,38 @@ const files = [
     category: "الفقه و علومه",
   },
   {
-    title: "الفرائد البهية في القواعد الفقهية",
-    url: ["https://www.mimham.net/audmat-380"],
-    category: "الفقه و علومه",
+    title: "منظومة التوحيد و الإيمان",
+    url: [
+      "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0302ShurutAsSalaah_AbdulAzizAsSini.mp3",
+    ],
+    category: "قسم الأطفال العقيدة",
+  },
+  {
+    title: "نظم المقصود",
+    url: [
+      "https://ia801603.us.archive.org/29/items/Mutun_al-Arabiya/makhsood.mp3",
+    ],
+    category: "اللغة",
+  },
+  {
+    title: "الجوهر المكنون",
+    url: [
+      "https://ia801603.us.archive.org/29/items/Mutun_al-Arabiya/aljawhar.mp3",
+    ],
+    category: "اللغة",
+  },
+  {
+    title: "الجوهر المكنون",
+    url: ["https://ia801603.us.archive.org/29/items/Mutun_al-Arabiya/abb.mp3"],
+    category: "اللغة",
   },
 
+  // https://dn721609.ca.archive.org/0/items/Mokhtasar_fi_Sirra/01.mp3
+
   {
-    title: "كتاب التوحيد",
-    url: [
-      "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0303KitaabAtTawheed_AbdulAzizAsSini.mp3",
-    ],
-    category: "العقيدة",
+    title: "نظم الآجرومية",
+    url: ["https://ia801603.us.archive.org/29/items/Mutun_al-Arabiya/abb.mp3"],
+    category: "اللغة",
   },
   {
     title: "منظومة البيقونية",
@@ -118,6 +139,13 @@ const files = [
       "https://ia600905.us.archive.org/18/items/Media-way2Allah_1521/mnzwma_ahsn_alakhlak_nzm-_3amr_bhgt_-_elkaa-_3le_al3amre_med.mp3",
     ],
     category: "الأدب و الرقائق قسم الأطفال",
+  },
+  {
+    title: "المنيرة في مهم علم السيرة",
+    url: [
+      "https://archive.org/download/Media-way2Allah_1881/kraaa_mnzwma_almnera_fe_mhm_3lm_alsera_-_llshekh_al3lama_salh_al3seme.mp3",
+    ],
+    category: "السيرة قسم الأطفال",
   },
 
   {
@@ -475,6 +503,21 @@ const files = [
     category: "التجويد و القراءات",
   },
   {
+    title: "الدرة المضية",
+    url: [
+      "  https://ia600303.us.archive.org/8/items/Mutun_kiraat_mujtami3a/dorah.mp3",
+    ],
+    category: "التجويد و القراءات",
+  },
+  {
+    title: "طيبة النشر",
+    url: [
+      "  https://ia600303.us.archive.org/8/items/Mutun_kiraat_mujtami3a/tayebatunashr.mp3",
+    ],
+    category: "التجويد و القراءات",
+  },
+
+  {
     title: "السلسبيل الشافي",
     url: [
       "https://media.islamway.net/lessons/scho977/440_Matn_Alsalsabel_Alshafy.mp3",
@@ -560,7 +603,7 @@ const files = [
     url: [
       "https://media.islamway.net/audiobooks/15-HDrihim_HossnMoslim256.mp3",
     ],
-    category: "الحديث و علومه أهم الصوتيات",
+    category: "قسم الأطفال أهم الصوتيات الحديث و علومه",
   },
   {
     title: "قصيدة أبي البقاء الرندي في رثاء الأندلس",
