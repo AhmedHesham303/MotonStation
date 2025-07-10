@@ -74,8 +74,16 @@ const files = [
     url: ["https://ia801603.us.archive.org/29/items/Mutun_al-Arabiya/abb.mp3"],
     category: "اللغة",
   },
-
-  // https://dn721609.ca.archive.org/0/items/Mokhtasar_fi_Sirra/01.mp3
+  {
+    title: "المختصر في السيرة",
+    url: [
+      "https://dn721609.ca.archive.org/0/items/Mokhtasar_fi_Sirra/01.mp3",
+      "https://dn721609.ca.archive.org/0/items/Mokhtasar_fi_Sirra/02.mp3",
+      "https://dn721609.ca.archive.org/0/items/Mokhtasar_fi_Sirra/03.mp3",
+      "https://dn721609.ca.archive.org/0/items/Mokhtasar_fi_Sirra/04.mp3",
+    ],
+    category: "السيرة أهم الصوتيات",
+  },
 
   {
     title: "نظم الآجرومية",

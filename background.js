@@ -57,6 +57,7 @@ function playFromTime(file, button) {
   const now = new Date();
   const secondsToday =
     now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds();
+  console.log(secondsToday);
   const index = 0;
   const selectedUrl = file.url[index].trim();
   const isLive =
