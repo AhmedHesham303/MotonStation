@@ -73,10 +73,12 @@ function playFromTime(file, button) {
   let secondsToday =
     now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds();
   let index = 0;
+
   if (file.size === "big") {
     [index, secondsToday] = handelBigFiles(file, secondsToday);
     console.log(index);
   }
+  if (file.size !== "big") audio.loop = true;
 
   const selectedUrl = file.url[index].trim();
   const isLive =
@@ -102,6 +104,23 @@ function playFromTime(file, button) {
         const seekTime = secondsToday % audio.duration;
         audio.currentTime = seekTime;
         audio.play();
+      },
+      { once: true }
+    );
+    audio.addEventListener(
+      "ended",
+      () => {
+        if (file.size === "big") {
+          secondsToday =
+            now.getHours() * 3600 +
+            now.getMinutes() * 60 +
+            now.getSeconds() +
+            1;
+          const seekTime = secondsToday % audio.duration;
+          console.log("finished");
+          audio.currentTime = seekTime;
+          audio.play();
+        }
       },
       { once: true }
     );
