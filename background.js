@@ -70,13 +70,13 @@ function playFromTime(file, button) {
   button.textContent = "❚❚";
 
   const now = new Date();
+  const factor = Math.ceil(file.total_duration / 86400) || 1;
   let secondsToday =
-    now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds();
+    (now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds()) * factor;
   let index = 0;
 
   if (file.size === "big") {
     [index, secondsToday] = handelBigFiles(file, secondsToday);
-    console.log(index);
   }
   if (file.size !== "big") audio.loop = true;
 
