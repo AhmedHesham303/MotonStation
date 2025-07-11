@@ -62,6 +62,7 @@ function handelBigFiles(file, secondsToday) {
 
 // ==== Playback Logic ====
 function playFromTime(file, button) {
+  let index = 0;
   if (currentPlayButton && currentPlayButton !== button) {
     currentPlayButton.textContent = "▶";
   }
@@ -73,7 +74,6 @@ function playFromTime(file, button) {
   const factor = Math.ceil(file.total_duration / 86400) || 1;
   let secondsToday =
     (now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds()) * factor;
-  let index = 0;
 
   if (file.size === "big") {
     [index, secondsToday] = handelBigFiles(file, secondsToday);
@@ -111,15 +111,19 @@ function playFromTime(file, button) {
       "ended",
       () => {
         if (file.size === "big") {
-          secondsToday =
-            now.getHours() * 3600 +
-            now.getMinutes() * 60 +
-            now.getSeconds() +
-            1;
-          const seekTime = secondsToday % audio.duration;
-          console.log("finished");
-          audio.currentTime = seekTime;
-          audio.play();
+          index = index + 1 < file.url.length ? index + 1 : 0; // go to next or loop to 0
+          const nextUrl = file.url[index].trim();
+
+          audio.src = nextUrl;
+
+          audio.addEventListener(
+            "loadedmetadata",
+            () => {
+              audio.currentTime = 0; // always start from beginning
+              audio.play();
+            },
+            { once: true }
+          );
         }
       },
       { once: true }
