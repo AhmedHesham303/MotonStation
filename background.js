@@ -73,7 +73,8 @@ function playFromTime(file, button) {
   const now = new Date();
   const factor = Math.ceil(file.total_duration / 86400) || 1;
   let secondsToday =
-    (now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds()) * factor;
+    (now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds() + 15300) *
+    factor;
 
   if (file.size === "big") {
     [index, secondsToday] = handelBigFiles(file, secondsToday);
@@ -92,12 +93,18 @@ function playFromTime(file, button) {
     document.querySelector(".section-audio").style.display = "none";
     document.querySelector(".live-audio").style.display = "flex";
     audio.controls = false;
+
     audio.play();
   } else {
     currentLiveFile = null;
     document.querySelector(".section-audio").style.display = "block";
     document.querySelector(".live-audio").style.display = "none";
     audio.controls = true;
+    // if (file.size === "big") {
+    //   document.querySelector(".section-audio").style.display = "none";
+    //   document.querySelector(".big-audio").style.display = "flex";
+    //   audio.controls = false;
+    // }
     audio.addEventListener(
       "loadedmetadata",
       () => {
@@ -140,6 +147,7 @@ function stopAudio(button) {
 
 // ==== Live Button Logic ====
 playLive.onclick = () => {
+  console.log(playLive);
   if (playLive.textContent === "❚❚") {
     stopAudio(playLive);
     currentPlayButton = null;
