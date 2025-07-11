@@ -659,13 +659,6 @@ const files = [
     url: ["https://www.mimham.net/audmat-631"],
     category: "قصائد و أناشيد مختارة",
   },
-
-  {
-    title: "أيا من يدعي الفهم",
-    url: [" https://media.islamway.net//several/197/120.mp3"],
-    category: "قصائد و أناشيد مختارة",
-  },
-
   {
     title: "ذوق الصلاة لابن القيم",
     url: ["https://media.islamway.net/audiobooks/4651/15_RHlibh_ThouqSlat.mp3"],
