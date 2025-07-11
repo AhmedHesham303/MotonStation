@@ -235,7 +235,8 @@ function searchFiles(query) {
 function handleCategoryClick() {
   categoryBtn.forEach((btn) => {
     btn.addEventListener("click", () => {
-      selectedCategory = btn.textContent;
+      selectedCategory = btn.textContent.trim();
+      console.log(selectedCategory);
       displayByCategory(selectedCategory);
       eraseElementClass(categoryBtn, "active");
       addElementClass(btn, "active");
