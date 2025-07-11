@@ -73,8 +73,7 @@ function playFromTime(file, button) {
   const now = new Date();
   const factor = Math.ceil(file.total_duration / 86400) || 1;
   let secondsToday =
-    (now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds() + 15300) *
-    factor;
+    (now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds()) * factor;
 
   if (file.size === "big") {
     [index, secondsToday] = handelBigFiles(file, secondsToday);
@@ -118,14 +117,17 @@ function playFromTime(file, button) {
       "ended",
       () => {
         if (file.size === "big") {
+          console.log(index);
+
           index = index + 1 < file.url.length ? index + 1 : 0; // go to next or loop to 0
           const nextUrl = file.url[index].trim();
-
+          console.log(index + 1);
           audio.src = nextUrl;
 
           audio.addEventListener(
             "loadedmetadata",
             () => {
+              console.log(index);
               audio.currentTime = 0; // always start from beginning
               audio.play();
             },

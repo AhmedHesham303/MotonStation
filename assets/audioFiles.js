@@ -87,6 +87,30 @@ const files = [
     duration: [14075, 16600, 20851, 21305],
     total_duration: 72831,
   },
+
+  {
+    title: "الداء و الدواء",
+    url: [
+      "https://media.islamway.net/audiobooks/615/125_Daa_Dawaa01.mp3",
+      "https://media.islamway.net/audiobooks/615/125_Daa_Dawaa02.mp3",
+      "https://media.islamway.net/audiobooks/615/125_Daa_Dawaa03.mp3",
+      "https://media.islamway.net/audiobooks/615/125_Daa_Dawaa04.mp3",
+      "https://media.islamway.net/audiobooks/615/125_Daa_Dawaa05.mp3",
+      "https://media.islamway.net/audiobooks/615/125_Daa_Dawaa06.mp3",
+      "https://media.islamway.net/audiobooks/615/125_Daa_Dawaa07.mp3",
+      "https://media.islamway.net/audiobooks/615/125_Daa_Dawaa08.mp3",
+      "https://media.islamway.net/audiobooks/615/125_Daa_Dawaa09.mp3",
+      "https://media.islamway.net/audiobooks/615/125_Daa_Dawaa10.mp3",
+      "https://media.islamway.net/audiobooks/615/125_Daa_Dawaa11.mp3",
+      "https://media.islamway.net/audiobooks/615/125_Daa_Dawaa12.mp3",
+    ],
+    category: "كتب صوتية أهم الصوتيات",
+    size: "big",
+    duration: [
+      2881, 2396, 2705, 2845, 3135, 2818, 2655, 2758, 2916, 3117, 3931, 1614,
+    ],
+    total_duration: 33771,
+  },
   // {
   //   title: "رياض الصالحين",
   //   url: [
