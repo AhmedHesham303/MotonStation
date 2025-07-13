@@ -70,7 +70,7 @@ const files = [
     category: "اللغة",
   },
   {
-    title: "الجوهر المكنون",
+    title: "نظم الآجرومية",
     url: ["https://ia801603.us.archive.org/29/items/Mutun_al-Arabiya/abb.mp3"],
     category: "اللغة",
   },
@@ -146,22 +146,17 @@ const files = [
   // },
 
   {
-    title: "نظم الآجرومية",
-    url: ["https://ia801603.us.archive.org/29/items/Mutun_al-Arabiya/abb.mp3"],
-    category: "اللغة",
-  },
-  {
     title: "منظومة البيقونية",
     url: [
       "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0401AlBayqooni_AbdulAzizAsSini.mp3",
     ],
     category: "الحديث و مصطلحه",
   },
-  {
-    title: "أحادييث مختارة من الؤلؤ و المرجان",
-    url: ["https://media.islamway.net/lessons/Motoon/A7adeeth.mp3"],
-    category: "الحديث و مصطلحه",
-  },
+  // {
+  //   title: "أحادييث مختارة من الؤلؤ و المرجان",
+  //   url: ["https://media.islamway.net/lessons/Motoon/A7adeeth.mp3"],
+  //   category: "الحديث و مصطلحه",
+  // },
 
   {
     title: "الخلاصة الحسناء في أذكار الصباح و المساء",
