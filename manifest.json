@@ -25,7 +25,7 @@
     "https://radio.alukah.ne"
   ],
   "background": {
-    "service_worker": "popup.js.js"
+    "service_worker": "popup.js"
   },
   "offscreen_documents": [
     {
