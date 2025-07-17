@@ -238,11 +238,11 @@ header .active {
   border: 1px solid #dee2e6;
   border-radius: 8px;
   padding: 8px 12px;
-  margin: 10px 0;
+  margin: 0.625rem 1.25rem;
   display: inline-flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: 0;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   min-width: 300px;
   font-family: 'Cairo', sans-serif;
@@ -259,8 +259,8 @@ header .active {
   color: #008baf;
   font-size: 1.6rem;
   font-weight: bold;
-  text-align: center;
-  flex: 1;
+  text-align: right;
+  flex: 0;
 }
 
 .restart-btn {
