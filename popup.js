@@ -7,6 +7,7 @@ const about = document.querySelector(".about");
 const playLive = document.querySelector(".play-live");
 const audioTimeTag = document.getElementById("audio-time-tag");
 const audioTimeSpan = document.getElementById("audio-time");
+const restartButton = document.getElementById("restart-audio");
 
 // ==== State ====
 let currentPlayButton = null;
@@ -74,8 +75,31 @@ function updateAudioTimeTag(currentSeconds) {
   if (currentAudioFile && !currentAudioFile.isLive) {
     audioTimeTag.style.display = "inline-flex";
     audioTimeSpan.textContent = formatTime(currentSeconds);
+    // Show restart button only when audio is playing
+    restartButton.style.display = "inline-block";
   } else {
     audioTimeTag.style.display = "none";
+    // Hide restart button when no audio is playing
+    restartButton.style.display = "none";
+  }
+}
+
+// Restart audio from beginning
+function restartAudio() {
+  if (currentAudioFile && currentAudioFile.file) {
+    const file = currentAudioFile.file;
+    
+    if (file.size === "big") {
+      // For big files, restart from first part
+      currentAudioFile.currentIndex = 0;
+      const firstUrl = file.url[0].trim();
+      console.log(`🔄 Restarting big file "${file.title}" from part 1`);
+      play(firstUrl, 0);
+    } else {
+      // For regular files, restart from beginning
+      console.log(`🔄 Restarting regular file "${file.title}" from beginning`);
+      play(file.url[0].trim(), 0);
+    }
   }
 }
 
@@ -89,17 +113,22 @@ function handleAudioEnd() {
       const currentIndex = currentAudioFile.currentIndex || 0;
       const nextIndex = currentIndex + 1;
       
+      console.log(`🎵 Big file "${file.title}" - Part ${currentIndex + 1} ended, moving to part ${nextIndex + 1}`);
+      
       if (nextIndex < file.url.length) {
         // Play next file in the series
         currentAudioFile.currentIndex = nextIndex;
         const nextUrl = file.url[nextIndex].trim();
+        console.log(`▶️ Playing part ${nextIndex + 1} of ${file.url.length}`);
         play(nextUrl, 0); // Start from beginning of next file
       } else {
         // End of series, stop
+        console.log(`⏹️ Big file "${file.title}" completed all ${file.url.length} parts - stopping`);
         stopAudio(currentPlayButton);
       }
     } else {
       // For regular files, loop back to beginning
+      console.log(`🔄 Regular file "${file.title}" ended - looping back to beginning`);
       const now = new Date();
       const factor = Math.ceil(file.total_duration / 86400) || 1;
       let secondsToday = (now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds()) * factor;
@@ -266,6 +295,7 @@ function stopAudio(button) {
   pause();
   if (button) button.textContent = "▶";
   audioTimeTag.style.display = "none"; // Hide time tag when stopped
+  restartButton.style.display = "none"; // Hide restart button when stopped
   currentAudioFile = null;
   currentPlayButton = null;
   
@@ -378,6 +408,11 @@ about.addEventListener("click", () => {
   window.location = "./about.html";
 });
 
+// Restart button event listener
+restartButton.addEventListener("click", () => {
+  restartAudio();
+});
+
 searchInput.addEventListener("input", () => {
   const results = searchFiles(searchInput.value);
   cardsContainer.innerHTML = "";
@@ -441,6 +476,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     
     // Handle audio ending
     if (request.ended && currentAudioFile) {
+      console.log(`🔊 Audio ended event received for: ${currentAudioFile.file.title}`);
       handleAudioEnd();
     }
   }

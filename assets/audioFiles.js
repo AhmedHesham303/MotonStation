@@ -84,6 +84,8 @@ const files = [
     ],
     category: "السيرة أهم الصوتيات",
     size: "big",
+    // duration: [15, 15, 15, 15],
+    // total_duration: 60,
     duration: [14075, 16600, 20851, 21305],
     total_duration: 72831,
   },

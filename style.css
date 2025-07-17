@@ -261,6 +261,28 @@ header .active {
   letter-spacing: 0.5px;
 }
 
+.restart-btn {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: 'Cairo', sans-serif;
+  transition: background-color 0.2s ease;
+  margin-right: 8px;
+}
+
+.restart-btn:hover {
+  background-color: #218838;
+}
+
+.restart-btn:active {
+  background-color: #1e7e34;
+}
+
 @media (max-width: 1440px) {
   html {
     font-size: 55%;
