@@ -94,8 +94,8 @@ function playFromTime(file, button) {
     currentLiveFile = null;
     document.querySelector(".section-audio").style.display = "block";
     document.querySelector(".live-audio").style.display = "none";
-    // Send play message to background service worker
-    play(selectedUrl);
+    // Send play message to background service worker with seek time
+    play(selectedUrl, secondsToday);
   }
 }
 
@@ -226,10 +226,11 @@ randomButton.addEventListener("click", () => {
 });
 
 // ==== Audio Control Functions ====
-async function play(source = "http://live.mp3quran.net:9702/") {
+async function play(source = "http://live.mp3quran.net:9702/", seekTime = 0) {
   await chrome.runtime.sendMessage({
     source,
     type: "play",
+    seekTime: seekTime,
     offscreen: true,
   });
   chrome.action.setBadgeBackgroundColor({ color: "green" });
