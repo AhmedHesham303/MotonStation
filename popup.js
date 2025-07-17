@@ -5,11 +5,14 @@ const categoryBtn = document.querySelectorAll(".categories button");
 const searchInput = document.querySelector(".search");
 const about = document.querySelector(".about");
 const playLive = document.querySelector(".play-live");
+const audioTimeTag = document.getElementById("audio-time-tag");
+const audioTimeSpan = document.getElementById("audio-time");
 
 // ==== State ====
 let currentPlayButton = null;
 let currentLiveFile = null;
 let selectedCategory = "أهم الصوتيات";
+let currentAudioFile = null;
 
 const curFiles = files.filter((file) =>
   file.category.includes(selectedCategory)
@@ -59,6 +62,138 @@ function handelBigFiles(file, secondsToday) {
   return [file.duration.length - 1, secondsToday];
 }
 
+// Format time as MM:SS
+function formatTime(seconds) {
+  const minutes = Math.floor(seconds / 60);
+  const secs = Math.floor(seconds % 60);
+  return `${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+}
+
+// Update audio time tag
+function updateAudioTimeTag(currentSeconds) {
+  if (currentAudioFile && !currentAudioFile.isLive) {
+    audioTimeTag.style.display = "inline-flex";
+    audioTimeSpan.textContent = formatTime(currentSeconds);
+  } else {
+    audioTimeTag.style.display = "none";
+  }
+}
+
+// Handle audio ending
+function handleAudioEnd() {
+  if (currentAudioFile && currentAudioFile.file) {
+    const file = currentAudioFile.file;
+    
+    if (file.size === "big") {
+      // For big files, go to next file
+      const currentIndex = currentAudioFile.currentIndex || 0;
+      const nextIndex = currentIndex + 1;
+      
+      if (nextIndex < file.url.length) {
+        // Play next file in the series
+        currentAudioFile.currentIndex = nextIndex;
+        const nextUrl = file.url[nextIndex].trim();
+        play(nextUrl, 0); // Start from beginning of next file
+      } else {
+        // End of series, stop
+        stopAudio(currentPlayButton);
+      }
+    } else {
+      // For regular files, loop back to beginning
+      const now = new Date();
+      const factor = Math.ceil(file.total_duration / 86400) || 1;
+      let secondsToday = (now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds()) * factor;
+      const seekTimeInFile = secondsToday % (file.total_duration || 1800);
+      
+      play(file.url[0].trim(), seekTimeInFile);
+    }
+  }
+}
+
+// Save current state
+function saveState() {
+  const state = {
+    selectedCategory: selectedCategory,
+    currentAudioFile: currentAudioFile,
+    currentPlayButton: currentPlayButton ? currentPlayButton.textContent : null,
+    currentLiveFile: currentLiveFile ? currentLiveFile.title : null
+  };
+  chrome.storage.local.set({ extensionState: state });
+}
+
+// Restore state
+async function restoreState() {
+  try {
+    const result = await chrome.storage.local.get(['extensionState']);
+    const state = result.extensionState;
+    
+    if (state) {
+      // Restore category
+      if (state.selectedCategory) {
+        selectedCategory = state.selectedCategory;
+        displayByCategory(selectedCategory);
+        updateCategoryButtons();
+      }
+      
+      // Restore audio playback if it was playing
+      if (state.currentAudioFile && state.currentAudioFile.file) {
+        const file = state.currentAudioFile.file;
+        const isLive = state.currentAudioFile.isLive;
+        
+        // Update UI to show current audio
+        document.querySelector(".playing-audio").textContent = file.title;
+        
+        if (isLive) {
+          currentLiveFile = file;
+          document.querySelector(".section-audio").style.display = "none";
+          document.querySelector(".live-audio").style.display = "flex";
+          audioTimeTag.style.display = "none";
+        } else {
+          currentLiveFile = null;
+          document.querySelector(".section-audio").style.display = "block";
+          document.querySelector(".live-audio").style.display = "none";
+          
+          // Restore current audio file state
+          currentAudioFile = state.currentAudioFile;
+          
+          // Update time tag if audio is playing
+          if (state.currentAudioFile.currentTime) {
+            updateAudioTimeTag(state.currentAudioFile.currentTime);
+          }
+        }
+        
+        // Update play button state
+        if (state.currentPlayButton) {
+          // Find the current play button and update its state
+          const cards = cardsContainer.querySelectorAll('.card');
+          cards.forEach(card => {
+            const playBtn = card.querySelector('.play');
+            const title = card.querySelector('h3').textContent;
+            if (title === file.title) {
+              playBtn.textContent = "❚❚";
+              currentPlayButton = playBtn;
+            } else {
+              playBtn.textContent = "▶";
+            }
+          });
+        }
+      }
+    }
+  } catch (error) {
+    console.log("Error restoring state:", error);
+  }
+}
+
+// Update category buttons to show active state
+function updateCategoryButtons() {
+  categoryBtn.forEach((btn) => {
+    if (btn.textContent.trim() === selectedCategory) {
+      eraseElementClass(categoryBtn, "active");
+      addElementClass(btn, "active");
+    }
+  });
+}
+
 // ==== Playback Logic ====
 function playFromTime(file, button) {
   let index = 0;
@@ -83,25 +218,59 @@ function playFromTime(file, button) {
     !selectedUrl.endsWith(".mp3") && !selectedUrl.includes("audmat");
 
   document.querySelector(".playing-audio").textContent = file.title;
+  
+  // Calculate seek time within the audio file
+  let seekTimeInFile = 0;
+  if (!isLive) {
+    // For regular files, calculate position within the file
+    if (file.size === "big") {
+      // For big files, seekTimeInFile is already calculated in handelBigFiles
+      seekTimeInFile = secondsToday;
+    } else {
+      // For regular files, use modulo to get position within file
+      seekTimeInFile = secondsToday % (file.total_duration || 1800); // Default 30 minutes if no duration
+    }
+  }
+  
+  // Store current file info for time display
+  currentAudioFile = {
+    file: file,
+    isLive: isLive,
+    seekTimeInFile: seekTimeInFile,
+    startTime: secondsToday,
+    currentIndex: index
+  };
 
   if (isLive) {
     currentLiveFile = file; // Save live file
     document.querySelector(".section-audio").style.display = "none";
     document.querySelector(".live-audio").style.display = "flex";
+    audioTimeTag.style.display = "none"; // Hide time tag for live
     // Send play message to background service worker
     play(selectedUrl);
   } else {
     currentLiveFile = null;
     document.querySelector(".section-audio").style.display = "block";
     document.querySelector(".live-audio").style.display = "none";
+    // Show initial time tag
+    updateAudioTimeTag(seekTimeInFile);
     // Send play message to background service worker with seek time
-    play(selectedUrl, secondsToday);
+    play(selectedUrl, seekTimeInFile);
   }
+  
+  // Save state after playing
+  saveState();
 }
 
 function stopAudio(button) {
   pause();
   if (button) button.textContent = "▶";
+  audioTimeTag.style.display = "none"; // Hide time tag when stopped
+  currentAudioFile = null;
+  currentPlayButton = null;
+  
+  // Save state after stopping
+  saveState();
 }
 
 // ==== Live Button Logic ====
@@ -198,6 +367,9 @@ function handleCategoryClick() {
       displayByCategory(selectedCategory);
       eraseElementClass(categoryBtn, "active");
       addElementClass(btn, "active");
+      
+      // Save state when category changes
+      saveState();
     });
   });
 }
@@ -255,6 +427,28 @@ async function setVolume(volume = 1) {
   });
 }
 
+// ==== Background Audio State Sync ====
+// Listen for messages from background to sync time display
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  if (request.type === "audioState") {
+    // Update time tag with current playback time
+    if (request.currentTime !== undefined && currentAudioFile && !currentAudioFile.isLive) {
+      updateAudioTimeTag(request.currentTime);
+      // Update current time in state
+      currentAudioFile.currentTime = request.currentTime;
+      saveState();
+    }
+    
+    // Handle audio ending
+    if (request.ended && currentAudioFile) {
+      handleAudioEnd();
+    }
+  }
+});
+
 // ==== Init ====
-curFiles.forEach((file) => createCard(file));
-handleCategoryClick();
+// Initialize with saved state
+restoreState().then(() => {
+  curFiles.forEach((file) => createCard(file));
+  handleCategoryClick();
+});

@@ -232,6 +232,35 @@ header .active {
   font-size: 1.6rem;
 }
 
+/* Audio time tag styling - looks like an audio element */
+.audio-time-tag {
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 8px 12px;
+  margin: 10px 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  min-width: 150px;
+  font-family: 'Cairo', sans-serif;
+}
+
+.audio-time-tag::before {
+  content: "▶";
+  color: #007bff;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.audio-time-tag span {
+  color: #495057;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
 @media (max-width: 1440px) {
   html {
     font-size: 55%;
