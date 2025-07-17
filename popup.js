@@ -1,5 +1,4 @@
 // ==== DOM Elements ====
-const audio = document.getElementById("player");
 const cardsContainer = document.querySelector(".cards");
 const randomButton = document.getElementById("random-play");
 const categoryBtn = document.querySelectorAll(".categories button");
@@ -78,78 +77,35 @@ function playFromTime(file, button) {
   if (file.size === "big") {
     [index, secondsToday] = handelBigFiles(file, secondsToday);
   }
-  if (file.size !== "big") audio.loop = true;
 
   const selectedUrl = file.url[index].trim();
   const isLive =
     !selectedUrl.endsWith(".mp3") && !selectedUrl.includes("audmat");
 
-  audio.src = selectedUrl;
   document.querySelector(".playing-audio").textContent = file.title;
 
   if (isLive) {
     currentLiveFile = file; // Save live file
     document.querySelector(".section-audio").style.display = "none";
     document.querySelector(".live-audio").style.display = "flex";
-    audio.controls = false;
-
-    audio.play();
+    // Send play message to background service worker
+    play(selectedUrl);
   } else {
     currentLiveFile = null;
     document.querySelector(".section-audio").style.display = "block";
     document.querySelector(".live-audio").style.display = "none";
-    audio.controls = true;
-    // if (file.size === "big") {
-    //   document.querySelector(".section-audio").style.display = "none";
-    //   document.querySelector(".big-audio").style.display = "flex";
-    //   audio.controls = false;
-    // }
-    audio.addEventListener(
-      "loadedmetadata",
-      () => {
-        const seekTime = secondsToday % audio.duration;
-        audio.currentTime = seekTime;
-        audio.play();
-      },
-      { once: true }
-    );
-    audio.addEventListener(
-      "ended",
-      () => {
-        if (file.size === "big") {
-          console.log(index);
-
-          index = index + 1 < file.url.length ? index + 1 : 0; // go to next or loop to 0
-          const nextUrl = file.url[index].trim();
-          console.log(index + 1);
-          audio.src = nextUrl;
-
-          audio.addEventListener(
-            "loadedmetadata",
-            () => {
-              console.log(index);
-              audio.currentTime = 0; // always start from beginning
-              audio.play();
-            },
-            { once: true }
-          );
-        }
-      },
-      { once: true }
-    );
+    // Send play message to background service worker
+    play(selectedUrl);
   }
 }
 
 function stopAudio(button) {
-  if (audio) {
-    audio.pause();
-  }
+  pause();
   if (button) button.textContent = "▶";
 }
 
 // ==== Live Button Logic ====
 playLive.onclick = () => {
-  console.log(playLive);
   if (playLive.textContent === "❚❚") {
     stopAudio(playLive);
     currentPlayButton = null;
@@ -268,6 +224,35 @@ randomButton.addEventListener("click", () => {
 
   playFromTime(randomFile, playBtn);
 });
+
+// ==== Audio Control Functions ====
+async function play(source = "http://live.mp3quran.net:9702/") {
+  await chrome.runtime.sendMessage({
+    source,
+    type: "play",
+    offscreen: true,
+  });
+  chrome.action.setBadgeBackgroundColor({ color: "green" });
+  chrome.action.setBadgeText({ text: "▶" });
+  chrome.storage.local.set({ source, status: "playing" });
+}
+
+async function pause() {
+  await chrome.runtime.sendMessage({
+    type: "pause",
+    offscreen: true,
+  });
+  chrome.action.setBadgeText({ text: "" });
+  chrome.storage.local.set({ source: "", status: "paused" });
+}
+
+async function setVolume(volume = 1) {
+  await chrome.runtime.sendMessage({
+    volume,
+    type: "volume",
+    offscreen: true,
+  });
+}
 
 // ==== Init ====
 curFiles.forEach((file) => createCard(file));

@@ -12,30 +12,16 @@
       "96": "assets/icons8-mosque-color-96.png"
     }
   },
-  "icons": {
-    "16": "assets/icons8-mosque-color-16.png",
-    "32": "assets/icons8-mosque-color-32.png",
-    "48": "assets/icons8-mosque-color-96.png"
-  },
-  "permissions": ["storage", "offscreen"],
-  "host_permissions": [
-    "https://files.a-alqasim.com/*",
-    "https://media.islamway.net/*",
-    "https://www.mimham.net",
-    "https://radio.alukah.ne"
-  ],
   "background": {
-    "service_worker": "popup.js"
+    "service_worker": "background.js"
   },
   "offscreen_documents": [
     {
       "url": "offscreen.html",
       "reasons": ["AUDIO_PLAYBACK"],
-      "justification": "To allow continuous audio playback even when the popup window is closed."
+      "justification": "Play audio when popup is closed"
     }
   ],
-
-  "content_security_policy": {
-    "extension_pages": "script-src 'self'; object-src 'self';"
-  }
+  "permissions": ["offscreen", "storage"],
+  "host_permissions": ["<all_urls>"]
 }
