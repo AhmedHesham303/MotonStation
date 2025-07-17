@@ -241,9 +241,10 @@ header .active {
   margin: 10px 0;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  justify-content: space-between;
+  gap: 12px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  min-width: 150px;
+  min-width: 300px;
   font-family: 'Cairo', sans-serif;
 }
 
@@ -255,32 +256,34 @@ header .active {
 }
 
 .audio-time-tag span {
-  color: #495057;
-  font-size: 14px;
-  font-weight: 500;
-  letter-spacing: 0.5px;
+  color: #008baf;
+  font-size: 1.6rem;
+  font-weight: bold;
+  text-align: center;
+  flex: 1;
 }
 
 .restart-btn {
-  background-color: #28a745;
+  background-color: #008baf;
   color: white;
   border: none;
   border-radius: 6px;
-  padding: 6px 12px;
-  font-size: 12px;
+  padding: 4px 8px;
+  font-size: 10px;
   font-weight: 500;
   cursor: pointer;
   font-family: 'Cairo', sans-serif;
   transition: background-color 0.2s ease;
-  margin-right: 8px;
+  white-space: nowrap;
+  min-width: fit-content;
 }
 
 .restart-btn:hover {
-  background-color: #218838;
+  background-color: #006d8a;
 }
 
 .restart-btn:active {
-  background-color: #1e7e34;
+  background-color: #005a73;
 }
 
 @media (max-width: 1440px) {
