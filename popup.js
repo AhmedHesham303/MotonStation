@@ -717,6 +717,19 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 // ==== Init ====
 // Initialize with saved state
 restoreState().then(() => {
-  curFiles.forEach((file) => createCard(file));
+  // Only create cards if not in random category
+  if (selectedCategory !== "متن عشوائي") {
+    let filesToShow = [];
+    if (selectedCategory === "المفضلة") {
+      filesToShow = getFilesFromLocalStorage();
+    } else if (selectedCategory === "الكل") {
+      filesToShow = files;
+    } else {
+      filesToShow = files.filter((file) => file.category.includes(selectedCategory));
+    }
+    filesToShow.forEach((file) => createCard(file));
+  } else {
+    cardsContainer.innerHTML = "";
+  }
   handleCategoryClick();
 });
