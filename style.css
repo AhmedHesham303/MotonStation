@@ -47,8 +47,8 @@ h1 {
   position: absolute;
   top: 1rem;
   left: 1rem;
-  /* background-color: #e0f3f8; */
-  z-index: 10;
+  background-color: transparent;
+  z-index: 200;
 }
 
 .about:hover {
