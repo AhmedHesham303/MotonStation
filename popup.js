@@ -263,11 +263,19 @@ function handleAudioEnd() {
 
 // Save current state
 function saveState() {
+  // Determine playback status for saving
+  let status = "paused";
+  // If audio bar icon is pause or currentPlayButton is pause, treat as playing
+  if ((currentPlayButton && currentPlayButton.textContent === "❚❚") ||
+      (!currentPlayButton && audioTimeTag.style.getPropertyValue('--play-icon') === '"❚❚"')) {
+    status = "playing";
+  }
   const state = {
     selectedCategory: selectedCategory,
     currentAudioFile: currentAudioFile,
     currentPlayButton: currentPlayButton ? currentPlayButton.textContent : null,
-    currentLiveFile: currentLiveFile ? currentLiveFile.title : null
+    currentLiveFile: currentLiveFile ? currentLiveFile.title : null,
+    status: status
   };
   chrome.storage.local.set({ extensionState: state });
 }
@@ -328,8 +336,7 @@ async function restoreState() {
             }
           });
         }
-        // --- NEW: Update audio bar icon to match playback state ---
-        // If audio is playing, show pause; if not, show play
+        // --- Always update audio bar icon based on status, even in random mode ---
         const status = state.status || (state.currentPlayButton ? "playing" : "paused");
         if (!isLive && currentAudioFile) {
           if (status === "playing") {
@@ -338,7 +345,7 @@ async function restoreState() {
             audioTimeTag.style.setProperty('--play-icon', '"▶"');
           }
         }
-        // --- END NEW ---
+        // --- END ---
       }
     }
   } catch (error) {
