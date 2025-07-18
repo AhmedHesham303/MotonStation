@@ -77,10 +77,79 @@ function updateAudioTimeTag(currentSeconds) {
     audioTimeSpan.textContent = formatTime(currentSeconds);
     // Show restart button only when audio is playing
     restartButton.style.display = "inline-block";
+    
+    // Make play icon clickable for all categories
+    audioTimeTag.style.cursor = "pointer";
+    audioTimeTag.onclick = togglePlayPause;
+    
+    // Update play icon based on current state
+    if (currentPlayButton && currentPlayButton.textContent === "❚❚") {
+      // Currently playing, show pause icon
+      audioTimeTag.style.setProperty('--play-icon', '"❚❚"');
+    } else {
+      // Currently paused, show play icon
+      audioTimeTag.style.setProperty('--play-icon', '"▶"');
+    }
   } else {
     audioTimeTag.style.display = "none";
     // Hide restart button when no audio is playing
     restartButton.style.display = "none";
+  }
+}
+
+// Toggle play/pause for all categories
+function togglePlayPause() {
+  if (currentAudioFile) {
+    // Check if audio is currently playing by looking at the play button state
+    if (currentPlayButton && currentPlayButton.textContent === "❚❚") {
+      // Currently playing, so pause
+      pause();
+      
+      // Update all play buttons to show play symbol
+      if (currentPlayButton) currentPlayButton.textContent = "▶";
+      
+      // Update all other play buttons to show play symbol
+      const allPlayButtons = cardsContainer.querySelectorAll('.play');
+      allPlayButtons.forEach(btn => {
+        btn.textContent = "▶";
+      });
+      
+      currentPlayButton = null;
+      
+      // Update the play icon to show play symbol
+      audioTimeTag.style.setProperty('--play-icon', '"▶"');
+    } else {
+      // Currently paused, so play
+      if (currentAudioFile.file) {
+        const file = currentAudioFile.file;
+        if (file.size === "big") {
+          // Resume big file from current part
+          const currentIndex = currentAudioFile.currentIndex || 0;
+          const currentUrl = file.url[currentIndex].trim();
+          play(currentUrl, currentAudioFile.currentTime || 0);
+        } else {
+          // Resume regular file
+          play(file.url[0].trim(), currentAudioFile.currentTime || 0);
+        }
+        
+        // Find and update the current play button
+        const cards = cardsContainer.querySelectorAll('.card');
+        cards.forEach(card => {
+          const playBtn = card.querySelector('.play');
+          const title = card.querySelector('h3').textContent;
+          if (title === file.title) {
+            playBtn.textContent = "❚❚";
+            currentPlayButton = playBtn;
+          } else {
+            // Update all other play buttons to show play symbol
+            playBtn.textContent = "▶";
+          }
+        });
+        
+        // Update the play icon to show pause symbol
+        audioTimeTag.style.setProperty('--play-icon', '"❚❚"');
+      }
+    }
   }
 }
 
@@ -275,12 +344,28 @@ function playFromTime(file, button) {
     document.querySelector(".section-audio").style.display = "none";
     document.querySelector(".live-audio").style.display = "flex";
     audioTimeTag.style.display = "none"; // Hide time tag for live
+    
+    // Update live button to show pause
+    playLive.textContent = "❚❚";
+    
+    // Update all other play buttons to show play
+    const allPlayButtons = cardsContainer.querySelectorAll('.play');
+    allPlayButtons.forEach(btn => {
+      if (btn !== button) {
+        btn.textContent = "▶";
+      }
+    });
+    
     // Send play message to background service worker
     play(selectedUrl);
   } else {
     currentLiveFile = null;
     document.querySelector(".section-audio").style.display = "block";
     document.querySelector(".live-audio").style.display = "none";
+    
+    // Update live button to show play
+    playLive.textContent = "▶";
+    
     // Show initial time tag
     updateAudioTimeTag(seekTimeInFile);
     // Send play message to background service worker with seek time
@@ -293,11 +378,22 @@ function playFromTime(file, button) {
 
 function stopAudio(button) {
   pause();
+  
+  // Update all play buttons to show play symbol
+  const allPlayButtons = cardsContainer.querySelectorAll('.play');
+  allPlayButtons.forEach(btn => {
+    btn.textContent = "▶";
+  });
+  
+  // Update live button to show play
+  playLive.textContent = "▶";
+  
   if (button) button.textContent = "▶";
   audioTimeTag.style.display = "none"; // Hide time tag when stopped
   restartButton.style.display = "none"; // Hide restart button when stopped
   currentAudioFile = null;
   currentPlayButton = null;
+  currentLiveFile = null;
   
   // Save state after stopping
   saveState();
@@ -305,13 +401,51 @@ function stopAudio(button) {
 
 // ==== Live Button Logic ====
 playLive.onclick = () => {
+  console.log("Live button clicked, current state:", playLive.textContent);
+  console.log("currentLiveFile:", currentLiveFile);
+  console.log("currentAudioFile:", currentAudioFile);
+  
   if (playLive.textContent === "❚❚") {
-    stopAudio(playLive);
+    // Currently playing, so pause
+    pause();
+    playLive.textContent = "▶";
+    
+    // Update only the current play button to show play
+    if (currentPlayButton) {
+      currentPlayButton.textContent = "▶";
+    }
+    
     currentPlayButton = null;
-  } else if (currentLiveFile) {
-    playFromTime(currentLiveFile, playLive);
   } else {
-    alert("اختر بثًا مباشرًا أولاً.");
+    // Currently paused, so play
+    if (currentLiveFile) {
+      // Resume live file
+      playFromTime(currentLiveFile, playLive);
+    } else if (currentAudioFile && currentAudioFile.isLive) {
+      // Resume current live audio
+      playFromTime(currentAudioFile.file, playLive);
+    } else {
+      // No live file available, but we can still toggle the button state
+      playLive.textContent = "❚❚";
+      
+      // Find the card button that matches the current audio and update it
+      if (currentAudioFile && currentAudioFile.file) {
+        console.log("Looking for card button for:", currentAudioFile.file.title);
+        const cards = cardsContainer.querySelectorAll('.card');
+        cards.forEach(card => {
+          const playBtn = card.querySelector('.play');
+          const title = card.querySelector('h3').textContent;
+          console.log("Checking card:", title, "against:", currentAudioFile.file.title);
+          if (title === currentAudioFile.file.title) {
+            console.log("Found matching card, updating button to ❚❚");
+            playBtn.textContent = "❚❚";
+            currentPlayButton = playBtn;
+          }
+        });
+      } else {
+        console.log("No currentAudioFile found");
+      }
+    }
   }
 };
 
@@ -350,10 +484,20 @@ function createCard(file) {
 
   playBtn.onclick = () => {
     if (playBtn.textContent === "❚❚") {
-      stopAudio(playBtn);
+      // Currently playing, so pause
+      pause();
+      playBtn.textContent = "▶";
+      
+      // Update live button to show play (same state)
+      playLive.textContent = "▶";
+      
       currentPlayButton = null;
     } else {
+      // Currently paused, so play
       playFromTime(file, playBtn);
+      
+      // Update live button to show pause (same state)
+      playLive.textContent = "❚❚";
     }
   };
 

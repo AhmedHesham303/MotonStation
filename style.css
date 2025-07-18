@@ -246,10 +246,15 @@ header .active {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   min-width: 300px;
   font-family: 'Cairo', sans-serif;
+  transition: all 0.2s ease;
+}
+
+.audio-time-tag:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .audio-time-tag::before {
-  content: "▶";
+  content: var(--play-icon, "▶");
   color: #007bff;
   font-size: 14px;
   font-weight: bold;
