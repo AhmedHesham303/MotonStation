@@ -202,11 +202,12 @@ async function restartAudio() {
     
     // Always restart from beginning, regardless of current state
     if (file.size === "big") {
-      // For big files, restart from first part
       currentAudioFile.currentIndex = 0;
       const firstUrl = file.url[0].trim();
       console.log(`🔄 Restarting big file "${file.title}" from part 1`);
       await play(firstUrl, 0);
+      // Ensure index is 0 in state after play
+      if (currentAudioFile) currentAudioFile.currentIndex = 0;
     } else {
       // For regular files, restart from beginning
       console.log(`🔄 Restarting regular file "${file.title}" from beginning`);
