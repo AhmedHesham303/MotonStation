@@ -14,6 +14,7 @@ let currentPlayButton = null;
 let currentLiveFile = null;
 let selectedCategory = "أهم الصوتيات";
 let currentAudioFile = null;
+let isRestarting = false; // Flag to prevent icon override during restart
 
 const curFiles = files.filter((file) =>
   file.category.includes(selectedCategory)
@@ -82,14 +83,21 @@ function updateAudioTimeTag(currentSeconds) {
     audioTimeTag.style.cursor = "pointer";
     audioTimeTag.onclick = togglePlayPause;
     
-    // Update play icon based on current state
-    if (currentPlayButton && currentPlayButton.textContent === "❚❚") {
-      // Currently playing, show pause icon
-      audioTimeTag.style.setProperty('--play-icon', '"❚❚"');
-    } else {
-      // Currently paused, show play icon
-      audioTimeTag.style.setProperty('--play-icon', '"▶"');
+    // Update play icon based on current state - but only if we're not in the middle of a restart
+    if (!isRestarting) {
+      if (currentPlayButton && currentPlayButton.textContent === "❚❚") {
+        // Currently playing, show pause icon
+        audioTimeTag.style.setProperty('--play-icon', '"❚❚"');
+      } else if (currentPlayButton && currentPlayButton.textContent === "▶") {
+        // Currently paused, show play icon
+        audioTimeTag.style.setProperty('--play-icon', '"▶"');
+      }
     }
+    // If currentPlayButton is null or isRestarting is true, don't change the icon (preserve manual setting)
+    
+    // Always show restart icon for restart button
+    restartButton.innerHTML = '<span class="restart-icon">🔄</span>';
+    restartButton.title = "التشغيل من بداية المتن";
   } else {
     audioTimeTag.style.display = "none";
     // Hide restart button when no audio is playing
@@ -154,21 +162,59 @@ function togglePlayPause() {
 }
 
 // Restart audio from beginning
-function restartAudio() {
+async function restartAudio() {
   if (currentAudioFile && currentAudioFile.file) {
     const file = currentAudioFile.file;
     
+    // Set restarting flag to prevent icon override
+    isRestarting = true;
+    
+    // Find and update the current play button to show pause symbol immediately (only if cards exist)
+    const cards = cardsContainer.querySelectorAll('.card');
+    if (cards.length > 0) {
+      cards.forEach(card => {
+        const playBtn = card.querySelector('.play');
+        const title = card.querySelector('h3').textContent;
+        if (title === file.title) {
+          playBtn.textContent = "❚❚";
+          currentPlayButton = playBtn;
+        } else {
+          // Update all other play buttons to show play symbol
+          playBtn.textContent = "▶";
+        }
+      });
+    }
+    
+    // Update the play icon in the time tag to show pause symbol immediately
+    audioTimeTag.style.setProperty('--play-icon', '"❚❚"');
+    
+    // Update live button to show pause if this is the current audio
+    if (currentLiveFile && currentLiveFile.title === file.title) {
+      playLive.textContent = "❚❚";
+    }
+    
+    // Always restart from beginning, regardless of current state
     if (file.size === "big") {
       // For big files, restart from first part
       currentAudioFile.currentIndex = 0;
       const firstUrl = file.url[0].trim();
       console.log(`🔄 Restarting big file "${file.title}" from part 1`);
-      play(firstUrl, 0);
+      await play(firstUrl, 0);
     } else {
       // For regular files, restart from beginning
       console.log(`🔄 Restarting regular file "${file.title}" from beginning`);
-      play(file.url[0].trim(), 0);
+      await play(file.url[0].trim(), 0);
     }
+    
+    // Ensure the play icon shows pause symbol after a short delay
+    setTimeout(() => {
+      audioTimeTag.style.setProperty('--play-icon', '"❚❚"');
+      // Reset restarting flag after delay
+      isRestarting = false;
+    }, 200);
+    
+    // Save state after restarting
+    saveState();
   }
 }
 
@@ -300,7 +346,9 @@ function playFromTime(file, button) {
   }
 
   currentPlayButton = button;
-  button.textContent = "❚❚";
+  if (button) {
+    button.textContent = "❚❚";
+  }
 
   const now = new Date();
   const factor = Math.ceil(file.total_duration / 86400) || 1;
@@ -313,7 +361,7 @@ function playFromTime(file, button) {
 
   const selectedUrl = file.url[index].trim();
   const isLive =
-    !selectedUrl.endsWith(".mp3") && !selectedUrl.includes("audmat");
+    !selectedUrl.endsWith(".mp3") && !selectedUrl.includes("audmat") || file.title === "المختصر في التفسير";
 
   document.querySelector(".playing-audio").textContent = file.title;
   
@@ -348,7 +396,7 @@ function playFromTime(file, button) {
     // Update live button to show pause
     playLive.textContent = "❚❚";
     
-    // Update all other play buttons to show play
+    // Update all other play buttons to show play (only if cards exist)
     const allPlayButtons = cardsContainer.querySelectorAll('.play');
     allPlayButtons.forEach(btn => {
       if (btn !== button) {
@@ -368,6 +416,7 @@ function playFromTime(file, button) {
     
     // Show initial time tag
     updateAudioTimeTag(seekTimeInFile);
+    
     // Send play message to background service worker with seek time
     play(selectedUrl, seekTimeInFile);
   }
@@ -391,6 +440,7 @@ function stopAudio(button) {
   if (button) button.textContent = "▶";
   audioTimeTag.style.display = "none"; // Hide time tag when stopped
   restartButton.style.display = "none"; // Hide restart button when stopped
+  
   currentAudioFile = null;
   currentPlayButton = null;
   currentLiveFile = null;
@@ -514,12 +564,18 @@ function createCard(file) {
 
 // ==== Filtering ====
 function displayByCategory(selectedCategory) {
-  const filteredFiles =
-    selectedCategory === "المفضلة"
-      ? getFilesFromLocalStorage()
-      : selectedCategory === "الكل"
-      ? files
-      : files.filter((file) => file.category.includes(selectedCategory));
+  let filteredFiles;
+  
+  if (selectedCategory === "المفضلة") {
+    filteredFiles = getFilesFromLocalStorage();
+  } else if (selectedCategory === "الكل") {
+    filteredFiles = files;
+  } else if (selectedCategory === "متن عشوائي") {
+    // For random category, don't show any cards
+    filteredFiles = [];
+  } else {
+    filteredFiles = files.filter((file) => file.category.includes(selectedCategory));
+  }
 
   cardsContainer.innerHTML = "";
   filteredFiles.forEach(createCard);
@@ -567,13 +623,27 @@ randomButton.addEventListener("click", () => {
   const randomIndex = Math.floor(Math.random() * files.length);
   const randomFile = files[randomIndex];
 
+  // Clear current state
+  if (currentPlayButton) {
+    currentPlayButton.textContent = "▶";
+    currentPlayButton = null;
+  }
+  
+  // Stop any currently playing audio
+  pause();
+  
+  // Clear cards completely for random category
   cardsContainer.innerHTML = "";
-  createCard(randomFile);
-
-  const lastCard = cardsContainer.querySelector(".card:last-child");
-  const playBtn = lastCard.querySelector(".card-right .play");
-
-  playFromTime(randomFile, playBtn);
+  
+  // Update selected category to random
+  selectedCategory = "متن عشوائي";
+  updateCategoryButtons();
+  
+  // Start playing the random file directly without creating a card
+  playFromTime(randomFile, null);
+  
+  // Save state
+  saveState();
 });
 
 // ==== Audio Control Functions ====
