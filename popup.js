@@ -109,21 +109,19 @@ function updateAudioTimeTag(currentSeconds) {
 function togglePlayPause() {
   if (currentAudioFile) {
     // Check if audio is currently playing by looking at the play button state
-    if (currentPlayButton && currentPlayButton.textContent === "❚❚") {
+    const isPlaying = (currentPlayButton && currentPlayButton.textContent === "❚❚") ||
+      (!currentPlayButton && audioTimeTag.style.getPropertyValue('--play-icon') === '"❚❚"');
+    if (isPlaying) {
       // Currently playing, so pause
       pause();
-      
       // Update all play buttons to show play symbol
       if (currentPlayButton) currentPlayButton.textContent = "▶";
-      
       // Update all other play buttons to show play symbol
       const allPlayButtons = cardsContainer.querySelectorAll('.play');
       allPlayButtons.forEach(btn => {
         btn.textContent = "▶";
       });
-      
       currentPlayButton = null;
-      
       // Update the play icon to show play symbol
       audioTimeTag.style.setProperty('--play-icon', '"▶"');
     } else {
@@ -139,8 +137,8 @@ function togglePlayPause() {
           // Resume regular file
           play(file.url[0].trim(), currentAudioFile.currentTime || 0);
         }
-        
         // Find and update the current play button
+        let found = false;
         const cards = cardsContainer.querySelectorAll('.card');
         cards.forEach(card => {
           const playBtn = card.querySelector('.play');
@@ -148,14 +146,16 @@ function togglePlayPause() {
           if (title === file.title) {
             playBtn.textContent = "❚❚";
             currentPlayButton = playBtn;
+            found = true;
           } else {
-            // Update all other play buttons to show play symbol
             playBtn.textContent = "▶";
           }
         });
-        
-        // Update the play icon to show pause symbol
-        audioTimeTag.style.setProperty('--play-icon', '"❚❚"');
+        // If no card exists (random mode), just update the audio bar icon
+        if (!found) {
+          currentPlayButton = null;
+          audioTimeTag.style.setProperty('--play-icon', '"❚❚"');
+        }
       }
     }
   }
@@ -170,6 +170,7 @@ async function restartAudio() {
     isRestarting = true;
     
     // Find and update the current play button to show pause symbol immediately (only if cards exist)
+    let found = false;
     const cards = cardsContainer.querySelectorAll('.card');
     if (cards.length > 0) {
       cards.forEach(card => {
@@ -178,11 +179,17 @@ async function restartAudio() {
         if (title === file.title) {
           playBtn.textContent = "❚❚";
           currentPlayButton = playBtn;
+          found = true;
         } else {
           // Update all other play buttons to show play symbol
           playBtn.textContent = "▶";
         }
       });
+    }
+    // If no card exists (random mode), just update the audio bar icon
+    if (!found) {
+      currentPlayButton = null;
+      audioTimeTag.style.setProperty('--play-icon', '"❚❚"');
     }
     
     // Update the play icon in the time tag to show pause symbol immediately
