@@ -328,6 +328,17 @@ async function restoreState() {
             }
           });
         }
+        // --- NEW: Update audio bar icon to match playback state ---
+        // If audio is playing, show pause; if not, show play
+        const status = state.status || (state.currentPlayButton ? "playing" : "paused");
+        if (!isLive && currentAudioFile) {
+          if (status === "playing") {
+            audioTimeTag.style.setProperty('--play-icon', '"❚❚"');
+          } else {
+            audioTimeTag.style.setProperty('--play-icon', '"▶"');
+          }
+        }
+        // --- END NEW ---
       }
     }
   } catch (error) {
