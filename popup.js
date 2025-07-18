@@ -212,15 +212,13 @@ async function restartAudio() {
       console.log(`🔄 Restarting regular file "${file.title}" from beginning`);
       await play(file.url[0].trim(), 0);
     }
-    
-    // Ensure the play icon shows pause symbol after a short delay
+    // Defensive: set badge after all async operations to guarantee it is green and shows ▶
+    chrome.action.setBadgeBackgroundColor({ color: "green" });
+    chrome.action.setBadgeText({ text: "▶" });
     setTimeout(() => {
       audioTimeTag.style.setProperty('--play-icon', '"❚❚"');
-      // Reset restarting flag after delay
       isRestarting = false;
     }, 200);
-    
-    // Save state after restarting
     saveState();
   }
 }
@@ -679,6 +677,7 @@ async function play(source = "http://live.mp3quran.net:9702/", seekTime = 0) {
     seekTime: seekTime,
     offscreen: true,
   });
+  // Always set badge when playing
   chrome.action.setBadgeBackgroundColor({ color: "green" });
   chrome.action.setBadgeText({ text: "▶" });
   chrome.storage.local.set({ source, status: "playing" });
