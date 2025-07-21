@@ -125,37 +125,9 @@ function togglePlayPause() {
       // Update the play icon to show play symbol
       audioTimeTag.style.setProperty('--play-icon', '"▶"');
     } else {
-      // Currently paused, so play
+      // Currently paused, so always resume from time-of-day seek
       if (currentAudioFile.file) {
-        const file = currentAudioFile.file;
-        if (file.size === "big") {
-          // Resume big file from current part
-          const currentIndex = currentAudioFile.currentIndex || 0;
-          const currentUrl = file.url[currentIndex].trim();
-          play(currentUrl, currentAudioFile.currentTime || 0);
-        } else {
-          // Resume regular file
-          play(file.url[0].trim(), currentAudioFile.currentTime || 0);
-        }
-        // Find and update the current play button
-        let found = false;
-        const cards = cardsContainer.querySelectorAll('.card');
-        cards.forEach(card => {
-          const playBtn = card.querySelector('.play');
-          const title = card.querySelector('h3').textContent;
-          if (title === file.title) {
-            playBtn.textContent = "❚❚";
-            currentPlayButton = playBtn;
-            found = true;
-          } else {
-            playBtn.textContent = "▶";
-          }
-        });
-        // If no card exists (random mode), just update the audio bar icon
-        if (!found) {
-          currentPlayButton = null;
-          audioTimeTag.style.setProperty('--play-icon', '"❚❚"');
-        }
+        playFromTime(currentAudioFile.file, currentPlayButton);
       }
     }
   }
