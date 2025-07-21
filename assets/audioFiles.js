@@ -50,7 +50,9 @@ const files = [
   },
   {
     title: "منظومة التوحيد و الإيمان",
-    url: ["https://way2allah.com/get-mada-player.htm"],
+    url: [
+      "https://ia902900.us.archive.org/29/items/Media-way2Allah_1881/mnzwma_altwhed_waleeman_-_nzm_3amr_bhgt_-_bswt_alshekh_3le_al3amre.mp3",
+    ],
     category: "قسم الأطفال العقيدة",
   },
   {
@@ -558,6 +560,54 @@ const files = [
     ],
     category: "السيرة",
   },
+
+  {
+    title: "الفوائد",
+    url: [
+      "https://media.islamway.net/audiobooks/615/125_Fawaed01.mp3",
+      "https://media.islamway.net/audiobooks/615/125_Fawaed02.mp3",
+      "https://media.islamway.net/audiobooks/615/125_Fawaed03.mp3",
+      "https://media.islamway.net/audiobooks/615/125_Fawaed04.mp3",
+      "https://media.islamway.net/audiobooks/615/125_Fawaed05.mp3",
+      "https://media.islamway.net/audiobooks/615/125_Fawaed06.mp3",
+      "https://media.islamway.net/audiobooks/615/125_Fawaed07.mp3",
+      "https://media.islamway.net/audiobooks/615/125_Fawaed08.mp3",
+      "https://media.islamway.net/audiobooks/615/125_Fawaed09.mp3",
+      "https://media.islamway.net/audiobooks/615/125_Fawaed10.mp3",
+      "https://media.islamway.net/audiobooks/615/125_Fawaed11.mp3",
+      "https://media.islamway.net/audiobooks/615/125_Fawaed12.mp3",
+    ],
+    category: "كتب صوتية",
+  },
+  {
+    title: "طريق الهجرتين",
+    url: [
+      "https://media.islamway.net/audiobooks/615/125_Tareeq_hejratain_01.mp3",
+      "https://media.islamway.net/audiobooks/615/125_Tareeq_hejratain_02.mp3",
+      "https://media.islamway.net/audiobooks/615/125_Tareeq_hejratain_03.mp3",
+      "https://media.islamway.net/audiobooks/615/125_Tareeq_hejratain_04.mp3",
+      "https://media.islamway.net/audiobooks/615/125_Tareeq_hejratain_05.mp3",
+      "https://media.islamway.net/audiobooks/615/125_Tareeq_hejratain_06.mp3",
+      "https://media.islamway.net/audiobooks/615/125_Tareeq_hejratain_07.mp3",
+      "https://media.islamway.net/audiobooks/615/125_Tareeq_hejratain_08.mp3",
+      "https://media.islamway.net/audiobooks/615/125_Tareeq_hejratain_09.mp3",
+      "https://media.islamway.net/audiobooks/615/125_Tareeq_hejratain_10.mp3",
+      "https://media.islamway.net/audiobooks/615/125_Tareeq_hejratain_11.mp3",
+      "https://media.islamway.net/audiobooks/615/125_Tareeq_hejratain_12.mp3",
+      "https://media.islamway.net/audiobooks/615/125_Tareeq_hejratain_13.mp3",
+      "https://media.islamway.net/audiobooks/615/125_Tareeq_hejratain_14.mp3",
+      "https://media.islamway.net/audiobooks/615/125_Tareeq_hejratain_15.mp3",
+      "https://media.islamway.net/audiobooks/615/125_Tareeq_hejratain_16.mp3",
+      "https://media.islamway.net/audiobooks/615/125_Tareeq_hejratain_17.mp3",
+      "https://media.islamway.net/audiobooks/615/125_Tareeq_hejratain_18.mp3",
+      "https://media.islamway.net/audiobooks/615/125_Tareeq_hejratain_19.mp3",
+      "https://media.islamway.net/audiobooks/615/125_Tareeq_hejratain_20.mp3",
+      "https://media.islamway.net/audiobooks/615/125_Tareeq_hejratain_21.mp3",
+      "https://media.islamway.net/audiobooks/615/125_Tareeq_hejratain_22.mp3",
+    ],
+    category: "كتب صوتية",
+  },
+
   {
     title: "الجزرية",
     url: [
