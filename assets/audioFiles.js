@@ -757,24 +757,7 @@ const files = [
     url: ["https://media.islamway.net/audiobooks/4651/15_RFHlibh_Theban.mp3"],
     category: "كتب صوتية",
   },
-  // {
-  //   title: "الداء و الدواء",
-  //   url: [
-  //     "https://media.islamway.net/audiobooks/615/125_Daa_Dawaa01.mp3",
-  //     "https://media.islamway.net/audiobooks/615/125_Daa_Dawaa02.mp3",
-  //     "https://media.islamway.net/audiobooks/615/125_Daa_Dawaa03.mp3",
-  //     "https://media.islamway.net/audiobooks/615/125_Daa_Dawaa04.mp3",
-  //     "https://media.islamway.net/audiobooks/615/125_Daa_Dawaa05.mp3",
-  //     "https://media.islamway.net/audiobooks/615/125_Daa_Dawaa06.mp3",
-  //     "https://media.islamway.net/audiobooks/615/125_Daa_Dawaa07.mp3",
-  //     "https://media.islamway.net/audiobooks/615/125_Daa_Dawaa08.mp3",
-  //     "https://media.islamway.net/audiobooks/615/125_Daa_Dawaa09.mp3",
-  //     "https://media.islamway.net/audiobooks/615/125_Daa_Dawaa10.mp3",
-  //     "https://media.islamway.net/audiobooks/615/125_Daa_Dawaa11.mp3",
-  //     "https://media.islamway.net/audiobooks/615/125_Daa_Dawaa12.mp3",
-  //   ],
-  //   category: "كتب صوتية",
-  // },
+
   {
     title: "رياض الصالحين",
     url: [
