@@ -50,9 +50,7 @@ const files = [
   },
   {
     title: "منظومة التوحيد و الإيمان",
-    url: [
-      "https://files.a-alqasim.com/audio/Mutoon/AbdulAzizAsSini/0302ShurutAsSalaah_AbdulAzizAsSini.mp3",
-    ],
+    url: ["https://way2allah.com/get-mada-player.htm"],
     category: "قسم الأطفال العقيدة",
   },
   {
@@ -505,11 +503,11 @@ const files = [
   //   category: "علوم القرآن و التفسير",
   // },
 
-  {
-    title: "فتاوي كبار العلماء",
-    url: ["https://radio.alukah.net/hadith"],
-    category: "الفقه و علومه",
-  },
+  // {
+  //   title: "فتاوي كبار العلماء",
+  //   url: ["https://radio.alukah.net/hadith"],
+  //   category: "الفقه و علومه",
+  // },
   {
     title: "منح الفعال نظم الورقات",
     url: ["https://www.mimham.net/audmat-1056"],
