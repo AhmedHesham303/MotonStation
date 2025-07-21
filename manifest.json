@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "إذاعة المتون الشرعية",
+  "name": "إذاعة المتون",
   "version": "1.1",
-  "description": "استمع إلى المتون الشرعية بأصوات المشايخ الموثوقين.",
+  "description": "استمع إلى المتون في مختلف الفنون في مكان واحد",
   "action": {
     "default_popup": "index.html",
     "default_title": "إذاعة المتون الشرعية",

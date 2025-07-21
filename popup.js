@@ -739,4 +739,7 @@ restoreState().then(() => {
     cardsContainer.innerHTML = "";
   }
   handleCategoryClick();
+
+  // Request current audio state from offscreen page
+  chrome.runtime.sendMessage({ type: "getState", offscreen: true });
 });

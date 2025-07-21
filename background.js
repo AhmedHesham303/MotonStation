@@ -1,13 +1,6 @@
 // Background service worker for handling offscreen document messaging
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  if (request.offscreen) {
-    // Forward messages to the offscreen document
-    chrome.runtime.sendMessage(request);
-  }
-});
 
-// Handle offscreen document creation
-async function createOffscreen() {
+async function ensureOffscreenDocument() {
   if (await chrome.offscreen.hasDocument()) return;
   await chrome.offscreen.createDocument({
     url: "offscreen.html",
@@ -16,11 +9,18 @@ async function createOffscreen() {
   });
 }
 
-// Initialize offscreen document when extension loads
+chrome.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
+  if (request.offscreen) {
+    await ensureOffscreenDocument();
+    // Forward the message to the offscreen document
+    chrome.runtime.sendMessage(request);
+  }
+});
+
 chrome.runtime.onStartup.addListener(() => {
-  createOffscreen();
+  ensureOffscreenDocument();
 });
 
 chrome.runtime.onInstalled.addListener(() => {
-  createOffscreen();
+  ensureOffscreenDocument();
 }); 

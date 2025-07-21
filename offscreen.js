@@ -38,6 +38,9 @@ chrome.runtime.onMessage.addListener((msg) => {
     case "volume":
       audio.volume = msg.volume;
       break;
+    case "getState":
+      sendAudioState();
+      break;
   }
 });
 
